@@ -1,0 +1,107 @@
+import { Card, CardContent } from "@/components/ui/card.tsx";
+import { SectionCode } from "@/lib/enums.ts";
+import { GSAPCardStack } from "../../components/ui/gsap-card-stack.tsx";
+import { useMediaQuery } from "react-responsive";
+
+const ambassadors = [
+  {
+    id: 1,
+    title: "山岸 秀匡",
+    description: "日本人初のミスター・オリンピア出場者で、2016年アーノルドクラシック212ポンド級優勝、2023年IFBBマスターズオリンピア212ポンド級優勝など数々の世界タイトルを受賞。アメリカと日本に自身の名を冠した『Iris Kyle, Hide Yamagishi, POWERHOUSE GYM』を展開し、ボディビル界の発展に尽力。YouTube登録者は36万人を超える。",
+    image: "/images/muscle-crew-1.png",
+    spImage: "/images/muscle-crew-1-sp.png",
+  },
+  {
+    id: 2,
+    title: "嶋田 慶太",
+    description: "ボディビル界屈指のイケメン選手・嶋田慶太。2024年IFBB世界フィットネス選手権および男子ワールドカップにて75kg以下級、さらに無差別級でも優勝し、世界チャンピオンの座を獲得。日本選手権でも数々の上位入賞を果たす実力派。鍛錬の美学を体現する存在として、YouTubeなどSNSを通じて多くの支持を集め、筋トレの魅力を発信し続けている。",
+    image: "/images/muscle-crew-2.png",
+    spImage: "/images/muscle-crew-2-sp.png",
+  },
+  {
+    id: 3,
+    title: "JIN",
+    description: "テキストテキストテキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキストテキストテキスト。テキストテキストテキストテキストテキストテキストテキスト",
+    image: "/images/muscle-crew-3.png",
+    spImage: "/images/muscle-crew-3-sp.png",
+  },
+  {
+    id: 4,
+    title: "持田 教利",
+    description: "フィジーク・ボディビル・クラシックフィジークの全カテゴリで実績を持つ、稀有なトップ選手。数々のコンテストで優勝を重ね、“日本一予約が取れない”人気パーソナルトレーナーとしても知られる。的確な指導と「効かせる技術」に定評があり、著書『キカトレ』やYouTube「おかずもちの筋肉生活」も話題。",
+    image: "/images/muscle-crew-4.png",
+    spImage: "/images/muscle-crew-4-sp.png",
+  },
+  {
+    id: 5,
+    title: "本気の夢中は、\n" +
+      "夢を引き寄せる。",
+    description: "山岸秀匡さんによる筋肉セミナー(不定期)への参加機会や、JINさんと共に現場で働くチャンス、持田トレーナーによる特別トレーニング指導など、他では体験できない貴重な機会が待っています。 働きながら、筋肉を高め、発信する。そんな唯一無二のキャリアが、ここにはあります。  \n" +
+      "※内容・実施時期は変更・中止となる場合がございます。",
+    image: "/images/muscle-crew-5.png",
+    spImage: "/images/muscle-crew-5.png",
+  }
+]
+
+const MuscleCrewSubsection = (): JSX.Element => {
+  const isMobile = useMediaQuery({
+    query: '(max-width: 768px)'
+  });
+  console.log("isMobile", isMobile);
+  // Transform ambassador data for card stack
+  const cardData = ambassadors.map((ambassador) => ({
+    id: ambassador.id,
+    content: (
+      <Card className="w-full md:w-[1502px] h-[752px] bg-black overflow-hidden">
+        <CardContent className="p-0">
+          <img
+            src={isMobile ? ambassador.spImage : ambassador.image}
+            className="h-full w-auto object-cover ml-auto mr-0"
+            alt="Mask group"
+          />
+          <div className="absolute w-full md:w-[517px] bottom-[23px] md:bottom-[50px] px-4 md:left-[62px]">
+            <div className="flex flex-col w-full md:w-[517px] items-start gap-[13px] md:gap-[30px]">
+              <h3 className="self-stretch [font-family:'Noto_Sans_JP',Helvetica] font-medium text-[#ffffff] text-[32px] md:text-[55px] tracking-[0] leading-[normal] whitespace-pre-wrap">
+                {ambassador.title}
+              </h3>
+              <p className="self-stretch font-medium text-[#ffffff] text-sm md:text-xl text-justify leading-[1.75] md:leading-[35px] [font-family:'Noto_Sans_JP',Helvetica] tracking-[0] whitespace-pre-wrap">
+                {ambassador.description}
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    )
+  }));
+
+  return (
+    <GSAPCardStack
+      cards={cardData}
+      className="bg-neon-yellow px-4"
+      backgroundImage="/images/yellow-bg-bottom.png"
+    >
+      {/* Header Section */}
+      <div className="flex flex-col items-center gap-[30px] w-full">
+        <div className="flex flex-col items-center gap-5 w-full">
+          <div className="inline-flex items-center">
+            <div className="custom-clip-path-both-side font-bold px-10 py-[3px] bg-black text-white text-[17px] lg:text-xl whitespace-nowrap [font-family:'Noto_Sans_JP',Helvetica]">
+              アンバサダー
+            </div>
+          </div>
+
+          <h2 className="font-semibold text-subblack text-[67px] lg:text-[150px] text-center tracking-[0] lg:leading-[150px] whitespace-nowrap [font-family:'Teko',Helvetica]">
+            MUSCLE CREW
+          </h2>
+        </div>
+
+        <p className="text-center text-xl font-body-text text-black leading-[var(--body-text-line-height)]">
+          MUSCLE CREWとは、<br className="lg:hidden" />当社の理念に共感し、共にマッスルの
+          <br />
+          可能性とセキュリティの魅力を発信する<br className="lg:hidden" />筋肉アンバサダーです。
+        </p>
+      </div>
+    </GSAPCardStack>
+  );
+};
+
+export default MuscleCrewSubsection;

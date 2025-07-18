@@ -1,0 +1,113 @@
+import { useRef, ReactNode } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+import { cn } from '@/lib/utils';
+import { useMediaQuery } from 'react-responsive'
+
+gsap.registerPlugin(ScrollTrigger);
+
+interface GSAPCardStackProps {
+  children: ReactNode;
+  className?: string;
+  id?: string;
+  backgroundImage?: string;
+  cards: Array<{
+    id: string | number;
+    content: ReactNode;
+  }>;
+}
+
+export const GSAPCardStack = ({
+  children,
+  className = '',
+  id,
+  backgroundImage,
+  cards
+}: GSAPCardStackProps) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const isMobile = useMediaQuery({
+    query: '(max-width: 768px)'
+  });
+  const startPosition = isMobile ? '-=70 top' : '-=120 top';
+
+  useGSAP(() => {
+    if (!containerRef.current || !cardsRef.current) return;
+
+    // const cardElements = cardsRef.current.querySelectorAll('[class*="card-"]');
+
+    // Create main timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: startPosition,
+        end: () => `+=${(containerRef.current as HTMLElement).offsetHeight * 3}`,
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1
+      }
+    });
+
+    gsap.utils.toArray(cardsRef.current.children).forEach((card, index) => {
+      if (!card) return;
+      // not set animation for first card
+      if (index === 0) {
+        tl.to(card, { yPercent: 0, duration: 0.5 });
+      } else {
+        tl.fromTo(card, { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 100, duration: 0.5, ease: 'power2.in' });
+      }
+    })
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  });
+
+  return (
+    <div
+      id={id}
+      className={`relative w-full py-[120px] ${className}`}
+      style={{
+        backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
+        backgroundSize: '100%',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'bottom',
+        backgroundColor: "#"
+      }}
+    >
+      {/* Header */}
+      <div className="w-full z-30 pb-8">
+        {children}
+      </div>
+
+      {/* Cards container */}
+      <div className="flex relative items-center justify-center" ref={containerRef}>
+        <div className="relative w-full max-w-[1644px]">
+          {/* AMBASSADOR text */}
+          <div className="invisible md:visible absolute top-[267px] left-[-218px] -rotate-90 [font-family:'Teko',Helvetica] font-medium text-black text-[150px] tracking-[0] leading-[normal] z-10">
+            AMBASSADOR
+          </div>
+
+          {/* Cards stack */}
+          <div ref={cardsRef} className="cards md:ml-36 w-full md:w-[1500px] h-[577px] md:h-[752px] relative rounded-[20px] border border-solid border-[#fcff00] overflow-hidden perspective-1000">
+            {cards.map((card, index) => (
+              <div
+                key={card.id}
+                className={cn(`card-${index + 1} absolute inset-0 w-full`, {
+                  "top-[15px] h-[calc(100% - 15px)]": index === 1,
+                  "top-[30px] h-[calc(100% - 30px)]": index === 2,
+                  "top-[45px] h-[calc(100% - 45px)]": index === 3,
+                  "top-[60px] h-[calc(100% - 60px)]": index === 4,
+                })}
+              >
+                {card.content}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

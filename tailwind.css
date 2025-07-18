@@ -1,0 +1,198 @@
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+
+:root {
+  --black: rgba(0, 0, 0, 1);
+  --body-small-font-family: "Noto Sans JP", Helvetica;
+  --body-small-font-size: 12px;
+  --body-small-font-style: normal;
+  --body-small-font-weight: 400;
+  --body-small-letter-spacing: 0px;
+  --body-small-line-height: 175%;
+  --body-text-font-family: "Noto Sans JP", Helvetica;
+  --body-text-font-size: 20px;
+  --body-text-font-style: normal;
+  --body-text-font-weight: 400;
+  --body-text-letter-spacing: 0px;
+  --body-text-line-height: 175%;
+  --heading-4-font-family: "Noto Sans JP", Helvetica;
+  --heading-4-font-size: 20px;
+  --heading-4-font-style: normal;
+  --heading-4-font-weight: 700;
+  --heading-4-letter-spacing: 0px;
+  --heading-4-line-height: 175%;
+  --mainyellow-neon: rgba(252, 255, 0, 1);
+  --neon-yellow: rgba(252, 255, 0, 1);
+  --subblack: rgba(0, 0, 0, 1);
+  --sublight-gray: rgba(189, 189, 189, 1);
+  --subyellow-20: rgba(252, 255, 0, 0.2);
+  --textwhite: rgba(255, 255, 255, 1);
+  --white: rgba(255, 255, 255, 1);
+  --yellow-20: rgba(252, 255, 0, 0.2);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: transparent;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: transparent;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+
+.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+          120deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.4) 50%,
+          rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+}
+
+.shine:hover::before {
+  animation: shineMove 1s ease forwards;
+}
+
+@keyframes shineMove {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 7s linear infinite;
+}
+
+.movie-shape {
+  clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+  margin-right: -20px;
+}
+
+.movie-shape-sp {
+  clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 100%);
+  margin-right: -20px;
+}
+
+.entry-shape {
+  clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.custom-clip-path-both-side {
+  clip-path: polygon(12px 0, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+}
+
+.custom-clip-path-right {
+  clip-path: polygon(0 0, 100% 0%, 95% 100%, 0% 100%);
+}
+
+.rectangle-outline {
+  clip-path: polygon(0 0, 100% 0%, 95% 100%, 0% 100%);
+  background: var(--mainyellow-neon);
+  border: 1px solid var(--neon-yellow);
+}
+.rectangle-outline .inner {
+  clip-path: polygon(0 0, calc(100% - 1px) 0%, calc(95% - 1px) 100%, 0% 100%);
+  padding: 10px;
+  background: var(--black);
+}

@@ -1,0 +1,198 @@
+/* Scroll animations */
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes marqueeLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marqueeRight {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Utility classes for scroll animations */
+.animate-slide-in-up {
+  animation: slideInUp 0.8s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.6s ease-out;
+}
+
+.animate-marquee-left {
+  animation: marqueeLeft 20s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marqueeRight 20s linear infinite;
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fullscreen section styles */
+.scroll-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+/* Scroll container */
+.scroll-container {
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+/* Parallax effect */
+.parallax-element {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Stagger animation delay utilities */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* Performance optimizations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Card stack animations */
+.card-stack-container {
+  perspective: 1000px;
+}
+
+.card-stack-item {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+/* Scroll hijacking styles */
+.scroll-hijack-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.sticky-content {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Card overlap effect */
+.card-overlap {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-overlap:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* Progress indicators */
+.progress-dot {
+  transition: all 0.3s ease;
+}
+
+.progress-dot.active {
+  background-color: #fcff00;
+  transform: scale(1.2);
+}
+
+/* Smooth card transitions */
+.card-transition {
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Smooth transitions */
+.smooth-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Loading state */
+.loading-fade {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.loading-fade.loaded {
+  opacity: 1;
+}
