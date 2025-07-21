@@ -1,4 +1,4 @@
-import {Fragment, useEffect, useState} from "react";
+import {Fragment, useState} from "react";
 import {Card, CardContent} from "@/components/ui/card.tsx";
 import {Badge} from "@/components/ui/badge.tsx";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.tsx";
@@ -104,9 +104,9 @@ export default function FormEntry() {
 
   const {isValid, isDirty} = form.formState;
 
-  useEffect(() => {
-    console.log(form.formState.errors)
-  }, [form])
+  // useEffect(() => {
+  //   console.log(form.formState.errors)
+  // }, [form])
 
   const formFields = [
     {label: "氏名", placeholder: "山田太郎", required: true, name: "name"},
@@ -169,7 +169,7 @@ export default function FormEntry() {
 
   // Render input form
   return (
-    <div className="relative w-full max-w-[1200px]">
+    <div className="relative w-full max-w-[1200px] placeholder-[#BDBDBD]">
       {/* Progress Steps */}
       <div className="flex justify-center mb-[36px]">
         <div className="relative w-fit max-w-[522px] h-[85px]">
@@ -239,10 +239,10 @@ export default function FormEntry() {
                             control={form.control}
                             render={({field: controllerField}) => (
                               <Select onValueChange={controllerField.onChange} value={controllerField.value}>
-                                <SelectTrigger className="w-full max-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none text-[17px]">
+                                <SelectTrigger className="w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none text-[17px]">
                                   <SelectValue
                                     placeholder="1990"
-                                    className="[font-family:'Noto_Sans_JP',Helvetica] font-normal  text-[17px]"
+                                    className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[17px]"
                                   />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -272,7 +272,7 @@ export default function FormEntry() {
                             control={form.control}
                             render={({field: controllerField}) => (
                               <Select onValueChange={controllerField.onChange} value={controllerField.value}>
-                                <SelectTrigger className="w-full max-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none  text-[17px]">
+                                <SelectTrigger className="w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none  text-[17px]">
                                   <SelectValue
                                     placeholder="1"
                                     className="[font-family:'Noto_Sans_JP',Helvetica] font-normal  text-[17px]"
@@ -305,7 +305,7 @@ export default function FormEntry() {
                             control={form.control}
                             render={({field: controllerField}) => (
                               <Select onValueChange={controllerField.onChange} value={controllerField.value}>
-                                <SelectTrigger className="w-full max-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none  text-[17px]">
+                                <SelectTrigger className="w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none  text-[17px]">
                                   <SelectValue
                                     placeholder="1"
                                     className="[font-family:'Noto_Sans_JP',Helvetica] font-normal  text-[17px]"
@@ -335,7 +335,7 @@ export default function FormEntry() {
                         control={form.control}
                         render={({field: controllerField}) => (
                           <Select onValueChange={controllerField.onChange} value={controllerField.value as string}>
-                            <SelectTrigger className="w-full max-w-[250px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none text-[17px]">
+                            <SelectTrigger className={cn("w-full max-w-[250px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] text-[#FF4B4B]": form.formState.errors[field.name as keyof FormData]})}>
                               <SelectValue
                                 placeholder={field.placeholder}
                                 className="[font-family:'Noto_Sans_JP',Helvetica] font-normal"
@@ -360,12 +360,12 @@ export default function FormEntry() {
                     ) : (
                       <Input
                         {...form.register(field.name as keyof FormData)}
-                        className={cn("w-full max-w-[768px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none p-[15px] [font-family:'Noto_Sans_JP',Helvetica] font-normal !text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B]": form.formState.errors[field.name as keyof FormData]})}
+                        className={cn("w-full max-w-[768px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none p-[15px] [font-family:'Noto_Sans_JP',Helvetica] font-normal !text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] placeholder:text-[#FF4B4B]": form.formState.errors[field.name as keyof FormData]})}
                         placeholder={field.placeholder}
                       />
                     )}
                     {form.formState.errors[field.name as keyof FormData] && (
-                      <p className="text-[#d70000] text-sm inline-flex gap-2.5 items-center mt-1">
+                      <p className="text-[#FF4B4B] text-sm inline-flex gap-2.5 items-center mt-1">
                         <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59553 0.621296C8.80119 0.738813 8.97162 0.909251 9.08914 1.11491L14.7625 11.0433C15.126 11.6794 14.905 12.4897 14.2689 12.8532C14.0684 12.9677 13.8416 13.028 13.6107 13.028H2.26403C1.53141 13.028 0.9375 12.434 0.9375 11.7014C0.9375 11.4706 0.997745 11.2437 1.11228 11.0433L6.78563 1.11491C7.14912 0.478809 7.95944 0.257812 8.59553 0.621296ZM7.90181 8.90295C7.42805 8.90295 7.07272 9.25315 7.07272 9.72009C7.07272 10.2083 7.41728 10.5585 7.90181 10.5585C8.37557 10.5585 8.73089 10.2083 8.73089 9.73071C8.73089 9.25315 8.37557 8.90295 7.90181 8.90295ZM8.56508 3.76263H7.23854V7.74223H8.56508V3.76263Z" fill="#FF4B4B"/>
                         </svg>
@@ -401,7 +401,7 @@ export default function FormEntry() {
                         id="privacy-policy"
                         checked={controllerField.value}
                         onCheckedChange={controllerField.onChange}
-                        className="w-[19px] h-[19px] rounded-sm border border-solid border-[#ffffff]"
+                        className="w-[19px] h-[19px] rounded-sm border-white data-[state=checked]:bg-white data-[state=checked]:text-black dark:data-[state=checked]:border-white dark:data-[state=checked]:bg-white"
                       />
                     )}
                   />
@@ -413,7 +413,7 @@ export default function FormEntry() {
                   </label>
                 </div>
                 {form.formState.errors.privacyPolicy && (
-                  <p className="text-[#d70000] text-sm text-center">
+                  <p className="text-[#FF4B4B] text-sm text-center">
                     {form.formState.errors.privacyPolicy.message}
                   </p>
                 )}

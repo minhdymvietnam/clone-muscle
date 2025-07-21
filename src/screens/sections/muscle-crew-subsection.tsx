@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@/components/ui/card.tsx";
-import { SectionCode } from "@/lib/enums.ts";
 import { GSAPCardStack } from "../../components/ui/gsap-card-stack.tsx";
 import { useMediaQuery } from "react-responsive";
 
@@ -47,16 +46,15 @@ const MuscleCrewSubsection = (): JSX.Element => {
   const isMobile = useMediaQuery({
     query: '(max-width: 768px)'
   });
-  console.log("isMobile", isMobile);
   // Transform ambassador data for card stack
   const cardData = ambassadors.map((ambassador) => ({
     id: ambassador.id,
     content: (
-      <Card className="w-full md:w-[1502px] h-[752px] bg-black overflow-hidden">
+      <Card className="w-full md:w-[1502px] h-[752px] bg-black border border-[#fcff00]  overflow-hidden">
         <CardContent className="p-0">
           <img
             src={isMobile ? ambassador.spImage : ambassador.image}
-            className="h-full w-auto object-cover ml-auto mr-0"
+            className="w-auto object-contain ml-auto mr-0"
             alt="Mask group"
           />
           <div className="absolute w-full md:w-[517px] bottom-[23px] md:bottom-[50px] px-4 md:left-[62px]">
@@ -81,7 +79,7 @@ const MuscleCrewSubsection = (): JSX.Element => {
       backgroundImage="/images/yellow-bg-bottom.png"
     >
       {/* Header Section */}
-      <div className="flex flex-col items-center gap-[30px] w-full">
+      <div className="flex flex-col items-center gap-5 md:gap-[30px] w-full">
         <div className="flex flex-col items-center gap-5 w-full">
           <div className="inline-flex items-center">
             <div className="custom-clip-path-both-side font-bold px-10 py-[3px] bg-black text-white text-[17px] lg:text-xl whitespace-nowrap [font-family:'Noto_Sans_JP',Helvetica]">
@@ -89,12 +87,12 @@ const MuscleCrewSubsection = (): JSX.Element => {
             </div>
           </div>
 
-          <h2 className="font-semibold text-subblack text-[67px] lg:text-[150px] text-center tracking-[0] lg:leading-[150px] whitespace-nowrap [font-family:'Teko',Helvetica]">
+          <h2 className="relative font-semibold text-subblack text-[67px] lg:text-[150px] text-center tracking-[0] lg:leading-[150px] whitespace-nowrap [font-family:'Teko',Helvetica]">
             MUSCLE CREW
           </h2>
         </div>
 
-        <p className="text-center text-xl font-body-text text-black leading-[var(--body-text-line-height)]">
+        <p className="relative text-center text-base md:text-xl font-body-text text-black leading-[1.75] md:leading-[var(--body-text-line-height)]">
           MUSCLE CREWとは、<br className="lg:hidden" />当社の理念に共感し、共にマッスルの
           <br />
           可能性とセキュリティの魅力を発信する<br className="lg:hidden" />筋肉アンバサダーです。

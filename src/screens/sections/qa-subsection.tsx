@@ -74,7 +74,7 @@ const QaSubsection = (): JSX.Element => {
                   <div className="w-7 h-[47px] [font-family:'Teko',Helvetica] font-medium text-mainyellow-neon text-4xl">
                     Q.
                   </div>
-                  <div className="font-heading-4 font-[number:var(--heading-4-font-weight)] text-white text-[length:var(--heading-4-font-size)] tracking-[var(--heading-4-letter-spacing)] leading-[var(--heading-4-line-height)] text-left w-full">
+                  <div className="font-heading-4 font-[number:var(--heading-4-font-weight)] text-white text-base md:text-[length:var(--heading-4-font-size)] tracking-[var(--heading-4-letter-spacing)] leading-[var(--heading-4-line-height)] text-left w-full">
                     {item.question}
                   </div>
                   <div className="flex-shrink-0 text-mainyellow-neon">
@@ -86,7 +86,7 @@ const QaSubsection = (): JSX.Element => {
               </AccordionTrigger>
               <AccordionContent className="p-0">
                 <div className="flex items-center gap-2.5 p-[15px] bg-subyellow-20">
-                  <div className="font-body-text font-[number:var(--body-text-font-weight)] text-white text-[length:var(--body-text-font-size)] tracking-[var(--body-text-letter-spacing)] leading-[var(--body-text-line-height)]">
+                  <div className="font-body-text font-[number:var(--body-text-font-weight)] text-white text-base md:text-[length:var(--body-text-font-size)] tracking-[var(--body-text-letter-spacing)] leading-[var(--body-text-line-height)]">
                     {item.answer}
                   </div>
                 </div>

@@ -1,16 +1,16 @@
 import Header from "./header.tsx";
 import Footer from "./footer.tsx";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll.ts";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 export default function Layout({ children }: LayoutProps) {
+  const { scrollTo } = useSmoothScroll();
+  
   const handleBackToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    scrollTo(0);
   }
 
   return <>

@@ -1,6 +1,5 @@
 
 import { Card, CardContent } from "@/components/ui/card.tsx";
-import { SectionCode } from "@/lib/enums.ts";
 
 const RecruitSubsection = (): JSX.Element => {
   // Data for recruitment requirements
@@ -104,7 +103,7 @@ const RecruitSubsection = (): JSX.Element => {
   ];
 
   return (
-    <section id={SectionCode.RECRUIT} className="relative min-h-[100lvh] w-full py-[70px] lg:py-[120px] px-6 md:px-12 lg:px-[360px] flex justify-center">
+    <section className="relative min-h-[100lvh] w-full py-[70px] lg:py-[120px] px-6 md:px-12 lg:px-[360px] flex justify-center">
       <Card className="relative w-full max-w-[1200px] bg-transparent border-0 shadow-none">
         <CardContent className="flex flex-col items-center gap-10 lg:gap-[60px] p-0">
           {/* Section Header */}
@@ -175,7 +174,7 @@ const RecruitSubsection = (): JSX.Element => {
                     </div>
 
                     {index < recruitmentItems.length - 1 && (
-                      <div className="relative w-full h-px bg-white before:absolute before:w-[124px] md:before:w-[202px] before:h-0.5 before:-top-0.5 before:left-0 before:bg-mainyellow-neon" />
+                      <div className="relative w-full h-px bg-white before:absolute before:w-[124px] md:before:w-[202px] before:h-0.5 before:-top-px before:left-0 before:bg-mainyellow-neon" />
                     )}
                   </div>
                 ))}

@@ -54,7 +54,7 @@ const IssueSubsection = (): JSX.Element => {
             </div>
             <div className="max-lg:max-w-[312px] max-lg:-mt-40 max-lg:flex max-lg:flex-col-reverse max-lg:items-center max-lg:gap-10 max-lg:mx-auto lg:absolute w-full lg:h-full lg:top-0 lg:bottom-0 lg:left-0 lg:right-0">
               <div className="lg:absolute lg:top-[30px] left-0 order-2">
-                <div className="w-[250px] aspect-square relative">
+                <div className="w-[250px] aspect-square relative mb-[5px]">
                   <div className="w-full h-full relative rounded-full overflow-hidden"><img src="/images/issue-side-1.png" alt="もっと自分を高める" className="absolute top-0 bottom-0 left-0 right-0 w-full h-full object-cover"/></div>
                   <div className="absolute bottom-0 left-0 w-max custom-clip-path-right bg-neon-yellow [font-family:'Noto_Sans_JP',Helvetica] font-bold text-3xl py-1 px-2.5 pr-5">もっと自分を高める</div>
                 </div>
@@ -63,7 +63,7 @@ const IssueSubsection = (): JSX.Element => {
                 </div>
               </div>
               <div className="lg:absolute lg:bottom-[30px] left-[180px] order-1">
-                <div className="w-[250px] aspect-square relative">
+                <div className="w-[250px] aspect-square relative mb-[5px]">
                   <div className="w-full h-full relative rounded-full overflow-hidden"><img src="/images/issue-side-2.png" alt="『筋トレが趣味』を" className="absolute top-0 bottom-0 left-0 right-0 w-full h-full object-cover"/></div>
                   <div className="absolute bottom-0 left-0 right-9 rectangle-outline">
                     <div className="inner [font-family:'Noto_Sans_JP',Helvetica] font-bold text-xl text-neon-yellow">『筋トレが趣味』を</div>
@@ -72,7 +72,7 @@ const IssueSubsection = (): JSX.Element => {
                 <div className="custom-clip-path-right bg-neon-yellow [font-family:'Noto_Sans_JP',Helvetica] font-bold text-3xl py-1 px-2.5">”強み”にしたい</div>
               </div>
               <div className="lg:absolute lg:top-1/2 lg:transform lg:translate-y-[-50%] right-0 order-3">
-                <div className="w-[250px] aspect-square relative">
+                <div className="w-[250px] aspect-square relative mb-[5px]">
                   <div className="w-full h-full relative rounded-full overflow-hidden"><img src="/images/issue-side-3.png" alt="もっと筋トレしたいのに" className="absolute top-0 bottom-0 left-0 right-0 w-full h-full object-cover"/></div>
                   <div className="absolute bottom-0 left-0 -right-1 rectangle-outline">
                     <div className="inner [font-family:'Noto_Sans_JP',Helvetica] font-bold text-xl text-neon-yellow">もっと筋トレしたいのに</div>

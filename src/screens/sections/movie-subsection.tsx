@@ -3,7 +3,7 @@ import {Card, CardContent} from "@/components/ui/card.tsx";
 const MovieSubsection = (): JSX.Element => {
   return (
     <section className="flex flex-col items-start py-[70px] px-4 lg:px-0 lg:py-[120px] relative w-full">
-      <div className="flex flex-col items-center gap-[60px] relative w-full">
+      <div className="flex flex-col items-center gap-[42px] md:gap-[60px] relative w-full">
         <div className="flex flex-col items-center gap-5 relative w-full">
           <div className="inline-flex items-center">
             <div className="custom-clip-path-both-side font-bold px-5 py-[3px] bg-mainyellow-neon text-black text-[17px] lg:text-xl whitespace-nowrap [font-family:'Noto_Sans_JP',Helvetica]">

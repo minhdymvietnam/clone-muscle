@@ -42,8 +42,8 @@ export const GSAPCardStack = ({
       scrollTrigger: {
         trigger: containerRef.current,
         start: startPosition,
-        end: () => `+=${(containerRef.current as HTMLElement).offsetHeight * 3}`,
-        scrub: 1,
+        end: () => `+=${(containerRef.current as HTMLElement).offsetHeight * 5}`,
+        scrub: true,
         pin: true,
         anticipatePin: 1
       }
@@ -68,7 +68,7 @@ export const GSAPCardStack = ({
   return (
     <div
       id={id}
-      className={`relative w-full py-[120px] ${className}`}
+      className={`relative w-full py-[78px] md:py-[120px] ${className}`}
       style={{
         backgroundImage: backgroundImage ? `url(${backgroundImage})` : undefined,
         backgroundSize: '100%',
@@ -77,8 +77,21 @@ export const GSAPCardStack = ({
         backgroundColor: "#"
       }}
     >
+      <div style={{
+        backgroundImage: `url("/images/yellow-bg-top.png")`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'top left',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        width: '100%',
+        height: 300,
+        zIndex: 0
+      }} />
       {/* Header */}
-      <div className="w-full z-30 pb-8">
+      <div className="w-full z-30 pb-5 md:pb-8">
         {children}
       </div>
 
@@ -91,7 +104,7 @@ export const GSAPCardStack = ({
           </div>
 
           {/* Cards stack */}
-          <div ref={cardsRef} className="cards md:ml-36 w-full md:w-[1500px] h-[577px] md:h-[752px] relative rounded-[20px] border border-solid border-[#fcff00] overflow-hidden perspective-1000">
+          <div ref={cardsRef} className="cards md:ml-36 w-full md:w-[1500px] h-[577px] md:h-[752px] relative rounded-[20px]  overflow-hidden">
             {cards.map((card, index) => (
               <div
                 key={card.id}

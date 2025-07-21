@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import { SectionCode } from "@/lib/enums.ts";
 import { cn } from "@/lib/utils.ts";
 import { useMediaQuery } from "react-responsive";
 
@@ -50,6 +49,7 @@ const GoodPointSubsection = (): JSX.Element => {
     },
     {
       title: "大会出場時、\nマッスル手当10000円支給",
+      spTitle: "大会出場時、マッスル\n手当10000円支給",
     },
     {
       title: "大会成績に応じて\n報奨金支給1位10万",
@@ -148,7 +148,7 @@ const GoodPointSubsection = (): JSX.Element => {
                     )
                   }
 
-                  <div className={cn("absolute w-full h-full top-0 left-0 bottom-0 right-0")} style={isMobile ? {transform: "rotateY(180deg)"} : point.alignment === "right" ? {
+                  <div className={cn("absolute w-full h-full top-0 left-0 bottom-0 right-0")} style={isMobile ? { transform: "rotateY(180deg)" } : point.alignment === "right" ? {
                     transform: "rotateY(180deg)",
                   } : {}}>
                     <img
@@ -158,7 +158,7 @@ const GoodPointSubsection = (): JSX.Element => {
                     />
 
                     <img
-                      className="absolute w-[17%] top-0 left-[12%]"
+                      className="absolute w-[17%] top-0 left-[12.06%]"
                       alt="Rectangle"
                       src="/images/rectangle-73-2.png"
                     />
@@ -179,16 +179,22 @@ const GoodPointSubsection = (): JSX.Element => {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="w-1/2 max-w-[307px] custom-clip-path-both-side bg-neon-yellow -mr-2.5 lg:-mr-4"
+                className="w-1/2 max-md:h-[63px] max-w-[307px] custom-clip-path-both-side bg-neon-yellow -mr-2.5 lg:-mr-4"
               >
                 <div className="flex items-center justify-center h-full p-0">
-                  <div className="[font-family:'DIN_2014-Bold',Helvetica] font-bold text-black text-[13px] lg:text-xl text-center leading-7 py-4">
-                    {benefit.title.split("\n").map((line, i) => (
+                  <div className="[font-family:'DIN_2014-Bold',Helvetica] font-bold text-black text-[13px] lg:text-xl text-center leading-7 py-4 lg:py-[31px]">
+                    {isMobile && benefit.spTitle ? benefit.spTitle.split("\n").map((line, i) => (
                       <Fragment key={i}>
                         {line}
                         {i < benefit.title.split("\n").length - 1 && <br />}
                       </Fragment>
-                    ))}
+                    )) :
+                      benefit.title.split("\n").map((line, i) => (
+                        <Fragment key={i}>
+                          {line}
+                          {i < benefit.title.split("\n").length - 1 && <br />}
+                        </Fragment>
+                      ))}
                   </div>
                 </div>
               </div>

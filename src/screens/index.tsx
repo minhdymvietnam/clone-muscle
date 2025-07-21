@@ -1,5 +1,4 @@
 import {Banner} from "./banner.tsx";
-import {LazySection} from "../components/ui/lazy-section.tsx";
 import {SectionCode} from "@/lib/enums.ts";
 import {useMediaQuery} from "react-responsive";
 import IssueSubsection from "@/screens/sections/issue-subsection.tsx";
@@ -11,6 +10,7 @@ import InterviewSubsection from "@/screens/sections/interview-subsection.tsx";
 import QaSubsection from "@/screens/sections/qa-subsection.tsx";
 import RecruitSubsection from "@/screens/sections/recruit-subsection.tsx";
 import EntrySubsection from "@/screens/sections/entry-subsection.tsx";
+import CTAButton from "@/components/ui/Cta-button.tsx";
 
 export default function LandingPage() {
   const isMobile = useMediaQuery({
@@ -33,8 +33,8 @@ export default function LandingPage() {
 
     <div id={SectionCode.GOOD_POINT} className="bg-black" style={{
       backgroundImage: isMobile ? 'url(/images/good-point-bg-sp.png)' : 'url(/images/good-point-bg.png)',
-      backgroundSize: isMobile ? '1100px 278px' : 'cover',
-      backgroundPosition: isMobile ? 'top' : 'center',
+      backgroundSize: 'cover',
+      backgroundPosition: isMobile ? 'center' : 'center',
       backgroundRepeat: 'no-repeat',
     }}>
       <GoodPointSubsection />
@@ -81,11 +81,11 @@ export default function LandingPage() {
     </div>
 
     <div
-      id="recruit"
+      id={SectionCode.RECRUIT}
       className="bg-subblack bg-fixed"
       style={{
-        backgroundImage: `url(/images/recruit-bg.png)`,
-        backgroundSize: 'contain',
+        backgroundImage: isMobile ? `url(/images/recruit_bg_sp.png)` : 'url(/images/recruit-bg.png)',
+        backgroundSize: 'cover',
         backgroundPosition: 'top',
         backgroundRepeat: 'no-repeat',
       }}
@@ -104,6 +104,9 @@ export default function LandingPage() {
       }}
     >
       <EntrySubsection />
+    </div>
+    <div className="md:hidden">
+      <CTAButton />
     </div>
   </>
 }

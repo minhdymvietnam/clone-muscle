@@ -106,7 +106,7 @@ const InterviewSubsection = (): JSX.Element => {
 
                 <CardContent className="flex items-start gap-[60px] w-full p-0">
                   <div className="flex flex-col w-[624.59px] items-start gap-[15px] relative">
-                    <div className="mt-[-1.00px] [font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-xl text-justify tracking-[0] leading-[35px]">
+                    <div className="mt-[-1.00px] [font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-xl text-justify tracking-[0] leading-[35px] whitespace-pre-line">
                       {itemShow?.description}
                     </div>
                   </div>
@@ -153,14 +153,14 @@ const InterviewSubsection = (): JSX.Element => {
                   </div>
                 </div>
 
-                <div className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-sm text-justify tracking-normal leading-[1.75]">
+                <div className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-sm text-justify tracking-normal leading-[1.75] whitespace-pre-line">
                   {itemShow?.description}
                 </div>
               </div>
               <img className="w-3/4 h-auto object-cover" src={itemShow?.imagePath} alt={itemShow?.titleLines[0].text} />
             </div>
 
-            <DialogClose className="absolute w-[42px] aspect-square top-0 right-0 bg-mainyellow-neon p-0 hover:bg-mainyellow-neon/90 focus:bg-mainyellow-neon/90">
+            <DialogClose asChild className="absolute w-[42px] aspect-square top-0 right-0 bg-mainyellow-neon p-0 hover:bg-mainyellow-neon/90 focus:bg-mainyellow-neon/90">
               <div className="h-[42px]">
                 <div className="relative w-[30px] h-[30px] top-1.5 left-1.5 rotate-45">
                   <div className="relative h-[30px]">
