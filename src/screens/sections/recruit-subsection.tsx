@@ -103,7 +103,7 @@ const RecruitSubsection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative min-h-[100lvh] w-full py-[70px] lg:py-[120px] px-6 md:px-12 lg:px-[360px] flex justify-center">
+    <section className="relative min-h-[100lvh] w-full py-[70px] lg:py-[120px] px-6 flex justify-center">
       <Card className="relative w-full max-w-[1200px] bg-transparent border-0 shadow-none">
         <CardContent className="flex flex-col items-center gap-10 lg:gap-[60px] p-0">
           {/* Section Header */}

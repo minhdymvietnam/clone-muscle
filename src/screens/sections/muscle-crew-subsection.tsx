@@ -35,8 +35,8 @@ const ambassadors = [
     id: 5,
     title: "本気の夢中は、\n" +
       "夢を引き寄せる。",
-    description: "山岸秀匡さんによる筋肉セミナー(不定期)への参加機会や、JINさんと共に現場で働くチャンス、持田トレーナーによる特別トレーニング指導など、他では体験できない貴重な機会が待っています。 働きながら、筋肉を高め、発信する。そんな唯一無二のキャリアが、ここにはあります。  \n" +
-      "※内容・実施時期は変更・中止となる場合がございます。",
+    description: "山岸秀匡さんによる筋肉セミナー(不定期)への参加機会や、JINさんと共に現場で働くチャンス、持田トレーナーによる特別トレーニング指導など、他では体験できない貴重な機会が待っています。 働きながら、筋肉を高め、発信する。そんな唯一無二のキャリアが、ここにはあります。",
+    secDescription: "※内容・実施時期は変更・中止となる場合がございます。",
     image: "/images/muscle-crew-5.png",
     spImage: "/images/muscle-crew-5.png",
   }
@@ -50,7 +50,7 @@ const MuscleCrewSubsection = (): JSX.Element => {
   const cardData = ambassadors.map((ambassador) => ({
     id: ambassador.id,
     content: (
-      <Card className="w-full md:w-[1502px] h-[752px] bg-black border border-[#fcff00]  overflow-hidden">
+      <Card className="w-full max-2xl:md:w-11/12 aspect-[1/2] bg-black border border-[#fcff00]  overflow-hidden">
         <CardContent className="p-0">
           <img
             src={isMobile ? ambassador.spImage : ambassador.image}
@@ -64,6 +64,7 @@ const MuscleCrewSubsection = (): JSX.Element => {
               </h3>
               <p className="self-stretch font-medium text-[#ffffff] text-sm md:text-xl text-justify leading-[1.75] md:leading-[35px] [font-family:'Noto_Sans_JP',Helvetica] tracking-[0] whitespace-pre-wrap">
                 {ambassador.description}
+                {ambassador?.secDescription && <span className="text-xs md:text-sm block">{ambassador.secDescription}</span>}
               </p>
             </div>
           </div>

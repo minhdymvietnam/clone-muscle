@@ -48,7 +48,7 @@ const InterviewSubsection = (): JSX.Element => {
         </div>
 
         {/* Interview Cards Section */}
-        <div className="flex max-w-[970px] pt-20 flex-col gap-40 lg:flex-row mx-auto w-full justify-between items-baseline">
+        <div className="flex max-w-[970px] pt-20 flex-col items-center gap-40 lg:flex-row mx-auto w-full justify-between lg:items-baseline">
           {interviewCards.map((card) => (
             <div className="space-y-6" key={card.id}>
               <div className="relative px-4" onClick={() => setItemShow(card)}>
@@ -63,7 +63,7 @@ const InterviewSubsection = (): JSX.Element => {
                 <Button
                   variant="link"
                   onClick={() => setItemShow(card)}
-                  className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-[#ffffff] text-xl tracking-[0] leading-[normal] whitespace-nowrap"
+                  className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-[#ffffff] text-xl tracking-[0] hover:no-underline leading-[normal] whitespace-nowrap"
                 >
                   <svg width="30" height="18" viewBox="0 0 30 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fillRule="evenodd" clipRule="evenodd" d="M29.6738 8.75283L21.369 0.87793L19.2931 2.69735L24.0541 7.19771H0.3125V10.1254H24.0541L19.2931 15.1281L21.369 17.3257L29.6738 8.75283Z" fill="white" />

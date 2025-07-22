@@ -43,7 +43,7 @@ const QaSubsection = (): JSX.Element => {
   ];
 
   return (
-    <section id={SectionCode.QA} className="w-full py-[70px] lg:py-[120px] px-4 md:px-8 lg:px-[360px]">
+    <section id={SectionCode.QA} className="w-full py-[70px] lg:py-[120px] px-4">
       <div className="flex flex-col items-center gap-8 lg:gap-[60px] max-w-[1200px] mx-auto">
         <div className="flex flex-col items-center gap-5">
           <div className="inline-flex items-center">

@@ -16,14 +16,14 @@ import {cn} from "@/lib/utils.ts";
 const formSchema = z.object({
   name: z.string().min(1, "氏名を入力してください"),
   furigana: z.string().min(1, "ふりがなを入力してください").max(50, "ふりがなは50文字以内で入力してください"),
-  email: z.string().min(1, "メールアドレスを入力してください").email("正しいメールアドレスを入力してください"),
+  email: z.string().min(1, "メールアドレスを入力してください").email("メールアドレスの形式が正しくありません。"),
   phone: z.string().min(1, "電話番号を入力してください").regex(/^[0-9-]+$/, "電話番号は数字とハイフンのみで入力してください").min(10, "電話番号は10桁以上で入力してください"),
   birthYear: z.string().nonempty("生年月日の年を選択してください"),
   birthMonth: z.string().nonempty("生年月日の月を選択してください"),
   birthDay: z.string().nonempty( "生年月日の日を選択してください"),
-  prefecture: z.string().min(1, "都道府県を選択してください"),
+  prefecture: z.string().min(1, "お住まいの都道府県を選択してください。"),
   muscleFeelings: z.string().optional(),
-  privacyPolicy: z.boolean().refine((val) => val === true, "個人情報保護方針に同意してください")
+  privacyPolicy: z.boolean().refine((val) => val === true, "「個人情報保護方針に同意する」にチェックを入れてください。")
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -91,9 +91,9 @@ export default function FormEntry() {
       furigana: "",
       email: "",
       phone: "",
-      birthYear: "1990",
-      birthMonth: "1",
-      birthDay: "1",
+      birthYear: "",
+      birthMonth: "",
+      birthDay: "",
       prefecture: "",
       muscleFeelings: "",
       privacyPolicy: false
@@ -105,7 +105,7 @@ export default function FormEntry() {
   const {isValid, isDirty} = form.formState;
 
   // useEffect(() => {
-  //   console.log(form.formState.errors)
+  //   console.log(!form.getValues("birthMonth"))
   // }, [form])
 
   const formFields = [
@@ -194,7 +194,7 @@ export default function FormEntry() {
                       {step.number}
                     </div>
                   </div>
-                  <div className="relative [font-family:'Noto_Sans_JP',Helvetica] font-medium text-textwhite text-xl w-max">
+                  <div className="relative [font-family:'Noto_Sans_JP',Helvetica] font-medium text-white lg:text-xl w-max">
                     {step.label}
                   </div>
                 </div>
@@ -208,22 +208,22 @@ export default function FormEntry() {
         <CardContent className="px-[11.44px] py-[2.8] lg:p-[50px] w-full">
           <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-[50px] w-full">
             {/* Form Fields */}
-            <div className="grid grid-cols-1 lg:grid-cols-[219px_1fr] gap-2.5 lg:gap-x-[113px] lg:gap-y-10">
+            <div className="grid grid-cols-1 lg:grid-cols-[219px_1fr] gap-5 lg:gap-x-[113px] lg:gap-y-10">
               {formFields.map((field, index) => (
                 <Fragment key={`field-${index}`}>
                   <div className="flex items-center gap-[15px]">
-                    <div className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-textwhite text-xl whitespace-nowrap">
+                    <div className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white lg:text-xl whitespace-nowrap">
                       {field.label}
                     </div>
                     {field.required ? (
                       <Badge className="px-[15px] py-[5px] bg-[#d70000] rounded-none hover:bg-[#d70000]">
-                        <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-textwhite text-[17px] whitespace-nowrap">
+                        <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-[15px] lg:text-[17px] whitespace-nowrap">
                           必須
                         </span>
                       </Badge>
                     ) : (
                       <Badge className="px-[15px] py-[5px] bg-[#818181] rounded-none hover:bg-[#818181]">
-                        <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-textwhite text-[17px] whitespace-nowrap">
+                        <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white text-[15px] lg:text-[17px] whitespace-nowrap">
                           任意
                         </span>
                       </Badge>
@@ -239,10 +239,10 @@ export default function FormEntry() {
                             control={form.control}
                             render={({field: controllerField}) => (
                               <Select onValueChange={controllerField.onChange} value={controllerField.value}>
-                                <SelectTrigger className="w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none text-[17px]">
+                                <SelectTrigger className={cn("w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] !text-[#FF4B4B]": form.formState.errors["birthYear" as keyof FormData], "text-[#bdbdbd80]": !form.getValues("birthYear")})}>
                                   <SelectValue
                                     placeholder="1990"
-                                    className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-[17px]"
+                                    className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-md lg:text-[17px]"
                                   />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -261,7 +261,7 @@ export default function FormEntry() {
                               </Select>
                             )}
                           />
-                          <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-textwhite text-[17px]">
+                          <span className={cn("[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white lg:text-[17px]", {"!text-[#FF4B4B]": form.formState.errors["birthYear"]})}>
                             年
                           </span>
                         </div>
@@ -272,10 +272,10 @@ export default function FormEntry() {
                             control={form.control}
                             render={({field: controllerField}) => (
                               <Select onValueChange={controllerField.onChange} value={controllerField.value}>
-                                <SelectTrigger className="w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none  text-[17px]">
+                                <SelectTrigger className={cn("w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none  text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] !text-[#FF4B4B]": form.formState.errors["birthMonth" as keyof FormData], "text-[#bdbdbd80]": !form.getValues("birthMonth")})}>
                                   <SelectValue
                                     placeholder="1"
-                                    className="[font-family:'Noto_Sans_JP',Helvetica] font-normal  text-[17px]"
+                                    className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-md lg:text-[17px]"
                                   />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -294,7 +294,7 @@ export default function FormEntry() {
                               </Select>
                             )}
                           />
-                          <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-textwhite text-[17px]">
+                          <span className={cn("[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white lg:text-[17px]", {"!text-[#FF4B4B]": form.formState.errors["birthMonth"]})}>
                             月
                           </span>
                         </div>
@@ -305,10 +305,10 @@ export default function FormEntry() {
                             control={form.control}
                             render={({field: controllerField}) => (
                               <Select onValueChange={controllerField.onChange} value={controllerField.value}>
-                                <SelectTrigger className="w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none  text-[17px]">
+                                <SelectTrigger className={cn("w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none  text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] !text-[#FF4B4B]": form.formState.errors["birthDay" as keyof FormData], "text-[#bdbdbd80]": !form.getValues("birthDay")})}>
                                   <SelectValue
                                     placeholder="1"
-                                    className="[font-family:'Noto_Sans_JP',Helvetica] font-normal  text-[17px]"
+                                    className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-md lg:text-[17px]"
                                   />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -324,7 +324,7 @@ export default function FormEntry() {
                               </Select>
                             )}
                           />
-                          <span className="[font-family:'Noto_Sans_JP',Helvetica] font-medium text-textwhite text-[17px]">
+                          <span className={cn("[font-family:'Noto_Sans_JP',Helvetica] font-medium text-white lg:text-[17px]", {"text-[#FF4B4B]": form.formState.errors["birthDay"]})}>
                             日
                           </span>
                         </div>
@@ -335,7 +335,7 @@ export default function FormEntry() {
                         control={form.control}
                         render={({field: controllerField}) => (
                           <Select onValueChange={controllerField.onChange} value={controllerField.value as string}>
-                            <SelectTrigger className={cn("w-full max-w-[250px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] text-[#FF4B4B]": form.formState.errors[field.name as keyof FormData]})}>
+                            <SelectTrigger className={cn("w-full max-w-[250px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none text-md lg:text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] !text-[#FF4B4B]": form.formState.errors[field.name as keyof FormData], "text-[#bdbdbd80]": !form.getValues(field.name as keyof FormData)})}>
                               <SelectValue
                                 placeholder={field.placeholder}
                                 className="[font-family:'Noto_Sans_JP',Helvetica] font-normal"
@@ -354,22 +354,30 @@ export default function FormEntry() {
                     ) : field.type === "textarea" ? (
                       <Textarea
                         {...form.register(field.name as keyof FormData)}
-                        className="w-full max-w-[768px] h-[123px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none p-[15px] [font-family:'Noto_Sans_JP',Helvetica] font-normal !text-[17px]"
+                        className="w-full max-w-[768px] h-[123px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none p-[15px] [font-family:'Noto_Sans_JP',Helvetica] font-normal !text-md lg:!text-[17px]"
                         placeholder={field.placeholder}
                       />
                     ) : (
                       <Input
                         {...form.register(field.name as keyof FormData)}
-                        className={cn("w-full max-w-[768px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none p-[15px] [font-family:'Noto_Sans_JP',Helvetica] font-normal !text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] placeholder:text-[#FF4B4B]": form.formState.errors[field.name as keyof FormData]})}
+                        className={cn("w-full max-w-[768px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none p-[15px] [font-family:'Noto_Sans_JP',Helvetica] font-normal !text-md lg:!text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] placeholder:text-[#FF4B4B]": form.formState.errors[field.name as keyof FormData]})}
                         placeholder={field.placeholder}
                       />
                     )}
-                    {form.formState.errors[field.name as keyof FormData] && (
-                      <p className="text-[#FF4B4B] text-sm inline-flex gap-2.5 items-center mt-1">
+                    {field.name !== 'birth' && form.formState.errors[field.name as keyof FormData] && (
+                      <p className="text-[#FF4B4B] text-xs lg:text-sm inline-flex gap-2.5 items-center mt-1">
                         <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59553 0.621296C8.80119 0.738813 8.97162 0.909251 9.08914 1.11491L14.7625 11.0433C15.126 11.6794 14.905 12.4897 14.2689 12.8532C14.0684 12.9677 13.8416 13.028 13.6107 13.028H2.26403C1.53141 13.028 0.9375 12.434 0.9375 11.7014C0.9375 11.4706 0.997745 11.2437 1.11228 11.0433L6.78563 1.11491C7.14912 0.478809 7.95944 0.257812 8.59553 0.621296ZM7.90181 8.90295C7.42805 8.90295 7.07272 9.25315 7.07272 9.72009C7.07272 10.2083 7.41728 10.5585 7.90181 10.5585C8.37557 10.5585 8.73089 10.2083 8.73089 9.73071C8.73089 9.25315 8.37557 8.90295 7.90181 8.90295ZM8.56508 3.76263H7.23854V7.74223H8.56508V3.76263Z" fill="#FF4B4B"/>
                         </svg>
                         {form.formState.errors[field.name as keyof FormData]?.message}
+                      </p>
+                    )}
+                    {field.name === 'birth' && ['birthYear', 'birthMonth', 'birthDay'].some(name => form.formState.errors[name as keyof FormData]) && (
+                      <p className="text-[#FF4B4B] text-xs lg:text-sm inline-flex gap-2.5 items-center mt-1">
+                        <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59553 0.621296C8.80119 0.738813 8.97162 0.909251 9.08914 1.11491L14.7625 11.0433C15.126 11.6794 14.905 12.4897 14.2689 12.8532C14.0684 12.9677 13.8416 13.028 13.6107 13.028H2.26403C1.53141 13.028 0.9375 12.434 0.9375 11.7014C0.9375 11.4706 0.997745 11.2437 1.11228 11.0433L6.78563 1.11491C7.14912 0.478809 7.95944 0.257812 8.59553 0.621296ZM7.90181 8.90295C7.42805 8.90295 7.07272 9.25315 7.07272 9.72009C7.07272 10.2083 7.41728 10.5585 7.90181 10.5585C8.37557 10.5585 8.73089 10.2083 8.73089 9.73071C8.73089 9.25315 8.37557 8.90295 7.90181 8.90295ZM8.56508 3.76263H7.23854V7.74223H8.56508V3.76263Z" fill="#FF4B4B"/>
+                        </svg>
+                        生年月日を選択してください。
                       </p>
                     )}
                   </div>
@@ -391,7 +399,7 @@ export default function FormEntry() {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col items-center gap-2">
                 <div className="flex items-center gap-2.5">
                   <Controller
                     name="privacyPolicy"
@@ -401,19 +409,22 @@ export default function FormEntry() {
                         id="privacy-policy"
                         checked={controllerField.value}
                         onCheckedChange={controllerField.onChange}
-                        className="w-[19px] h-[19px] rounded-sm border-white data-[state=checked]:bg-white data-[state=checked]:text-black dark:data-[state=checked]:border-white dark:data-[state=checked]:bg-white"
+                        className={cn("w-4 h-4 lg:w-[19px] lg:h-[19px] rounded-sm border-white data-[state=checked]:bg-white data-[state=checked]:text-black dark:data-[state=checked]:border-white dark:data-[state=checked]:bg-white", {"border-[#FF4B4B]": form.formState.errors.privacyPolicy})}
                       />
                     )}
                   />
                   <label
                     htmlFor="privacy-policy"
-                    className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-textwhite text-xl leading-[35px]"
+                    className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white lg:text-xl leading-[35px]"
                   >
                     個人情報保護方針に同意する
                   </label>
                 </div>
                 {form.formState.errors.privacyPolicy && (
-                  <p className="text-[#FF4B4B] text-sm text-center">
+                  <p className="text-[#FF4B4B] text-xs lg:text-sm inline-flex gap-2.5 items-center mt-1">
+                    <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M8.59553 0.621296C8.80119 0.738813 8.97162 0.909251 9.08914 1.11491L14.7625 11.0433C15.126 11.6794 14.905 12.4897 14.2689 12.8532C14.0684 12.9677 13.8416 13.028 13.6107 13.028H2.26403C1.53141 13.028 0.9375 12.434 0.9375 11.7014C0.9375 11.4706 0.997745 11.2437 1.11228 11.0433L6.78563 1.11491C7.14912 0.478809 7.95944 0.257812 8.59553 0.621296ZM7.90181 8.90295C7.42805 8.90295 7.07272 9.25315 7.07272 9.72009C7.07272 10.2083 7.41728 10.5585 7.90181 10.5585C8.37557 10.5585 8.73089 10.2083 8.73089 9.73071C8.73089 9.25315 8.37557 8.90295 7.90181 8.90295ZM8.56508 3.76263H7.23854V7.74223H8.56508V3.76263Z" fill="#FF4B4B"/>
+                    </svg>
                     {form.formState.errors.privacyPolicy.message}
                   </p>
                 )}
@@ -423,13 +434,13 @@ export default function FormEntry() {
             {/* Submit Button */}
             <button
               type="submit"
-              className={cn("w-full py-5 rounded-[3px] hover:bg-sublight-gray/90 disabled:opacity-50 disabled:cursor-not-allowed", {
+              className={cn("w-full py-5 rounded-[3px] shine hover:bg-sublight-gray/90 disabled:opacity-50 disabled:cursor-not-allowed", {
                 "bg-[linear-gradient(270deg,rgba(252,255,0,1)_0%,rgba(254,255,135,1)_50%,rgba(252,255,0,1)_100%)] hover:bg-[linear-gradient(270deg,rgba(252,255,0,0.9)_0%,rgba(254,255,135,0.9)_50%,rgba(252,255,0,0.9)_100%)]": isDirty && isValid,
                 "bg-sublight-gray": !isDirty || !isValid,
               })}
               disabled={form.formState.isSubmitting}
             >
-  <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-subblack text-3xl leading-[35px]">
+  <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-subblack text-2xl lg:text-3xl leading-[35px]">
     {form.formState.isSubmitting ? "送信中..." : "内容を確認する"}
   </span>
             </button>

@@ -204,8 +204,12 @@ html.lenis body {
   clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 
+.custom-clip-path-both-side-large {
+  clip-path: polygon(25px 0, 100% 0%, calc(100% - 25px) 100%, 0% 100%);
+}
+
 .custom-clip-path-both-side {
-  clip-path: polygon(12px 0, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+  clip-path: polygon(20px 0, 100% 0%, calc(100% - 20px) 100%, 0% 100%);
 }
 
 .custom-clip-path-right {

@@ -42,7 +42,7 @@ export const GSAPCardStack = ({
       scrollTrigger: {
         trigger: containerRef.current,
         start: startPosition,
-        end: () => `+=${(containerRef.current as HTMLElement).offsetHeight * 5}`,
+        end: () => `+=${(cards.length - 1) * 100}%`,
         scrub: true,
         pin: true,
         anticipatePin: 1
@@ -104,7 +104,7 @@ export const GSAPCardStack = ({
           </div>
 
           {/* Cards stack */}
-          <div ref={cardsRef} className="cards md:ml-36 w-full md:w-[1500px] h-[577px] md:h-[752px] relative rounded-[20px]  overflow-hidden">
+          <div ref={cardsRef} className="cards md:ml-36 w-full md:w-11/12 aspect-[0.62/1] md:h-[752px] relative rounded-[20px]  overflow-hidden">
             {cards.map((card, index) => (
               <div
                 key={card.id}

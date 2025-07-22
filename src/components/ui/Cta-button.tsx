@@ -24,7 +24,7 @@ const CTAButton = () => {
   if (hidden) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 flex justify-center p-4">
+    <div className="fixed bottom-0 left-0 right-0 z-40 flex justify-center p-4">
       <button
         onClick={() => {
           window.location.href = "#entry";

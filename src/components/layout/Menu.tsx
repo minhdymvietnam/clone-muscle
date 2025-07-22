@@ -23,7 +23,7 @@ export const Menu = ({isOpen, onClose}: MenuProps): JSX.Element => {
   if (!isOpen) return <></>;
 
   return (
-    <div className="fixed top-14 px-4 py-9 left-0 w-full h-[calc(100vh-56px)] bg-black z-[100] flex flex-row justify-center">
+    <div className="fixed top-14 px-4 py-9 right-0 w-full sm:max-w-[400px] h-[calc(100vh-56px)] bg-black z-[100] flex flex-row justify-center">
       <div className="">
           {/* Menu items */}
           <Card className="border-none bg-transparent">

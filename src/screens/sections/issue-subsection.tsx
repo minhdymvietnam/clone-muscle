@@ -91,8 +91,8 @@ const IssueSubsection = (): JSX.Element => {
         </div>
 
         {/* Message section */}
-        <div className="relative w-full bg-[100%_100%] pt-10 md:pt-[84px]">
-          <div className="flex flex-col lg:justify-between" id={SectionCode.MESSAGE}>
+        <div className="relative w-full bg-[100%_100%] pt-10 md:pt-[84px]" id={SectionCode.MESSAGE}>
+          <div className="flex flex-col lg:justify-between">
             <div className="flex flex-col w-full max-w-[680px] mx-auto items-center gap-[30px]">
               <div className="flex flex-col items-center gap-5">
                 <div className="inline-flex items-center">

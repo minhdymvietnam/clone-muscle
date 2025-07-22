@@ -247,12 +247,12 @@ const ScheduleSubsection = (): JSX.Element => {
             alt="Mask group"
           />
           <img
-            src="/images/schedule_gym-2.png"
+            src="/images/schedule_gym-3.png"
             className="absolute w-[343px] h-[220px] top-[633px] left-[525px]"
             alt="Mask group"
           />
           <img
-            src="/images/schedule_gym-3.png"
+            src="/images/schedule_gym-2.png"
             className="absolute w-[343px] h-[220px] top-[376px] left-0"
             alt="Mask group"
           />

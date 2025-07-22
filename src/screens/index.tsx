@@ -100,7 +100,6 @@ export default function LandingPage() {
         backgroundImage: `url(/images/entry_bg.png)`,
         backgroundSize: 'contain',
         backgroundPosition: 'top',
-        backgroundRepeat: 'no-repeat',
       }}
     >
       <EntrySubsection />

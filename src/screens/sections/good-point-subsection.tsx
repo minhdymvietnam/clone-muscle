@@ -107,7 +107,7 @@ const GoodPointSubsection = (): JSX.Element => {
                   </div>
 
                   {/* Point Description */}
-                  <div className="text-base md:text-xl text-white text-justify leading-[var(--body-text-line-height)] max-w-[550px]">
+                  <div className="text-base md:text-xl !leading-[1.75] text-white text-justify max-w-[550px]">
                     {point.description.split("\n").map((line, i) => (
                       <Fragment key={i}>
                         {line}
@@ -148,7 +148,7 @@ const GoodPointSubsection = (): JSX.Element => {
                     )
                   }
 
-                  <div className={cn("absolute w-full h-full top-0 left-0 bottom-0 right-0")} style={isMobile ? { transform: "rotateY(180deg)" } : point.alignment === "right" ? {
+                  <div className={cn("absolute aspect-[933.92/574.7] top-0 left-0 bottom-0 right-0")} style={isMobile ? { transform: "rotateY(180deg)" } : point.alignment === "right" ? {
                     transform: "rotateY(180deg)",
                   } : {}}>
                     <img
@@ -179,7 +179,7 @@ const GoodPointSubsection = (): JSX.Element => {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="w-1/2 max-md:h-[63px] max-w-[307px] custom-clip-path-both-side bg-neon-yellow -mr-2.5 lg:-mr-4"
+                className="w-1/2 max-md:h-[63px] max-w-[307px] custom-clip-path-both-side-large bg-neon-yellow -mr-6 transform -translate-x-3"
               >
                 <div className="flex items-center justify-center h-full p-0">
                   <div className="[font-family:'DIN_2014-Bold',Helvetica] font-bold text-black text-[13px] lg:text-xl text-center leading-7 py-4 lg:py-[31px]">

@@ -1,6 +1,9 @@
 import {useEffect, useState} from "react";
 import {SectionCode} from "@/lib/enums.ts";
 import {Menu} from "@/components/layout/Menu.tsx";
+import {useSmoothScroll} from "@/hooks/useSmoothScroll.ts";
+import {cn} from "@/lib/utils.ts";
+import {Button} from "@/components/ui/button.tsx";
 
 const logoUrl = "images/logo.png"
 
@@ -17,9 +20,19 @@ const navItems = [
 export default function Header() {
   const [activeNav, setActiveNav] = useState(SectionCode.MESSAGE);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const {scrollTo} = useSmoothScroll();
+
+  const handleBackToTop = () => {
+    scrollTo(0);
+  }
 
   useEffect(() => {
     const handleScroll = () => {
+      const scrollY = window.scrollY;
+      // Show back to top button only when scrolled past the banner section (100vh)
+      setShowBackToTop(scrollY > 200);
+
       const current = navItems.findLast(item => {
         const section = document.getElementById(item.code);
         if (section) {
@@ -41,9 +54,10 @@ export default function Header() {
     setIsMenuOpen(prevState => !prevState)
   }
 
-  return <header className="fixed w-full top-0 left-0 bg-black z-50">
-    <div className="flex items-center justify-between px-4 lg:pr-0 lg:pl-[30px] min-h-14 lg:min-h-[90px] w-full">
-      <div className="h-6 lg:h-[35px] gap-2.5 lg:gap-3.5 flex items-center">
+  return <>
+    <header className="fixed w-full top-0 left-0 bg-black z-50">
+    <div className="flex items-center justify-between px-4 3xl:pr-0 lg:pl-[30px] min-h-14 lg:min-h-[90px] w-full">
+      <div className="h-6 lg:h-[35px] gap-2.5 lg:gap-3.5 flex items-center cursor-pointer" onClick={handleBackToTop}>
         <img
           src={logoUrl}
           className="w-auto h-full object-cover"
@@ -55,13 +69,13 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="hidden lg:flex items-center gap-5">
-        <div className="inline-flex items-start gap-9">
+      <div className="hidden 3xl:flex items-center gap-5">
+        <div className="flex h-full items-start gap-9">
           {navItems.map((item) => (
             <a
               key={item.code}
               href={`#${item.code}`}
-              className="w-fit flex flex-col items-center justify-between gap-2.5"
+              className="w-fit flex flex-col items-center group justify-between gap-2.5 relative h-full"
             >
               <div
                 className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-neon-yellow text-lg tracking-[0] leading-[normal]"
@@ -73,9 +87,8 @@ export default function Header() {
               >
                 {item.subtitle}
               </div>
-              {activeNav === item.code && (
-                <div className="w-[34px] h-[3px] mt-2 bg-neon-yellow"/>
-              )}
+
+              <span className={cn("absolute top-[calc(100%+6px)] hidden group-hover:block transition delay-300 right-1/2 transform translate-x-1/2 w-[34px] h-[3px] mt-2 bg-neon-yellow", {"block": activeNav === item.code})}/>
             </a>
           ))}
         </div>
@@ -95,7 +108,7 @@ export default function Header() {
       </div>
 
       <button
-        className="lg:hidden !bg-transparent p-0 border-none focus:outline-none"
+        className="3xl:hidden !bg-transparent p-0 border-none focus:outline-none"
         onClick={onToggleMenu}
       >
         {isMenuOpen ? (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -112,4 +125,15 @@ export default function Header() {
 
     <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}/>
   </header>
+    {showBackToTop && (
+      <Button className="!fixed bottom-20 right-4 md:bottom-10 md:right-0 w-[50px] block md:w-[83px] h-auto shine aspect-square z-40 cursor-pointer p-0">
+        <img
+          className="w-full h-full object-cover"
+          alt="back to top"
+          src="/images/back-to-top.png"
+          onClick={handleBackToTop}
+        />
+      </Button>
+    )}
+  </>
 }
