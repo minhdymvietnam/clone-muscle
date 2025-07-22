@@ -1,4 +1,4 @@
-import {Fragment, useState} from "react";
+import {Fragment, useState, useRef, useEffect} from "react";
 import {Card, CardContent} from "@/components/ui/card.tsx";
 import {Badge} from "@/components/ui/badge.tsx";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.tsx";
@@ -83,6 +83,12 @@ export default function FormEntry() {
   const [formData, setFormData] = useState<FormData | null>(null);
   const [submitResult, setSubmitResult] = useState<'success' | 'error' | null>(null);
 
+  // Create refs for select fields
+  const birthYearRef = useRef<HTMLButtonElement>(null);
+  const birthMonthRef = useRef<HTMLButtonElement>(null);
+  const birthDayRef = useRef<HTMLButtonElement>(null);
+  const prefectureRef = useRef<HTMLButtonElement>(null);
+
   const form = useForm<FormData>({
     mode: "onChange",
     resolver: zodResolver(formSchema),
@@ -104,9 +110,22 @@ export default function FormEntry() {
 
   const {isValid, isDirty} = form.formState;
 
-  // useEffect(() => {
-  //   console.log(!form.getValues("birthMonth"))
-  // }, [form])
+  // Focus first invalid select field
+  useEffect(() => {
+    if (form.formState.isSubmitted) {
+      const errors = form.formState.errors;
+      
+      if (errors.birthYear && birthYearRef.current) {
+        birthYearRef.current.focus();
+      } else if (errors.birthMonth && birthMonthRef.current) {
+        birthMonthRef.current.focus();
+      } else if (errors.birthDay && birthDayRef.current) {
+        birthDayRef.current.focus();
+      } else if (errors.prefecture && prefectureRef.current) {
+        prefectureRef.current.focus();
+      }
+    }
+  }, [form.formState.errors, form.formState.isSubmitted]);
 
   const formFields = [
     {label: "氏名", placeholder: "山田太郎", required: true, name: "name"},
@@ -165,7 +184,6 @@ export default function FormEntry() {
     setSubmitResult(null);
     form.reset();
   };
-
 
   // Render input form
   return (
@@ -239,7 +257,10 @@ export default function FormEntry() {
                             control={form.control}
                             render={({field: controllerField}) => (
                               <Select onValueChange={controllerField.onChange} value={controllerField.value}>
-                                <SelectTrigger className={cn("w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] !text-[#FF4B4B]": form.formState.errors["birthYear" as keyof FormData], "text-[#bdbdbd80]": !form.getValues("birthYear")})}>
+                                <SelectTrigger 
+                                  ref={birthYearRef}
+                                  className={cn("w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] !text-[#FF4B4B]": form.formState.errors["birthYear" as keyof FormData], "text-[#bdbdbd80]": !form.getValues("birthYear")})}
+                                >
                                   <SelectValue
                                     placeholder="1990"
                                     className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-md lg:text-[17px]"
@@ -272,7 +293,10 @@ export default function FormEntry() {
                             control={form.control}
                             render={({field: controllerField}) => (
                               <Select onValueChange={controllerField.onChange} value={controllerField.value}>
-                                <SelectTrigger className={cn("w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none  text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] !text-[#FF4B4B]": form.formState.errors["birthMonth" as keyof FormData], "text-[#bdbdbd80]": !form.getValues("birthMonth")})}>
+                                <SelectTrigger 
+                                  ref={birthMonthRef}
+                                  className={cn("w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none  text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] !text-[#FF4B4B]": form.formState.errors["birthMonth" as keyof FormData], "text-[#bdbdbd80]": !form.getValues("birthMonth")})}
+                                >
                                   <SelectValue
                                     placeholder="1"
                                     className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-md lg:text-[17px]"
@@ -305,7 +329,10 @@ export default function FormEntry() {
                             control={form.control}
                             render={({field: controllerField}) => (
                               <Select onValueChange={controllerField.onChange} value={controllerField.value}>
-                                <SelectTrigger className={cn("w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none  text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] !text-[#FF4B4B]": form.formState.errors["birthDay" as keyof FormData], "text-[#bdbdbd80]": !form.getValues("birthDay")})}>
+                                <SelectTrigger 
+                                  ref={birthDayRef}
+                                  className={cn("w-full max-w-[114px] lg:min-w-[114px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none  text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] !text-[#FF4B4B]": form.formState.errors["birthDay" as keyof FormData], "text-[#bdbdbd80]": !form.getValues("birthDay")})}
+                                >
                                   <SelectValue
                                     placeholder="1"
                                     className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-md lg:text-[17px]"
@@ -335,7 +362,10 @@ export default function FormEntry() {
                         control={form.control}
                         render={({field: controllerField}) => (
                           <Select onValueChange={controllerField.onChange} value={controllerField.value as string}>
-                            <SelectTrigger className={cn("w-full max-w-[250px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none text-md lg:text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] !text-[#FF4B4B]": form.formState.errors[field.name as keyof FormData], "text-[#bdbdbd80]": !form.getValues(field.name as keyof FormData)})}>
+                            <SelectTrigger 
+                              ref={prefectureRef}
+                              className={cn("w-full max-w-[250px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none text-md lg:text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] !text-[#FF4B4B]": form.formState.errors[field.name as keyof FormData], "text-[#bdbdbd80]": !form.getValues(field.name as keyof FormData)})}
+                            >
                               <SelectValue
                                 placeholder={field.placeholder}
                                 className="[font-family:'Noto_Sans_JP',Helvetica] font-normal"
@@ -440,9 +470,9 @@ export default function FormEntry() {
               })}
               disabled={form.formState.isSubmitting}
             >
-  <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-subblack text-2xl lg:text-3xl leading-[35px]">
-    {form.formState.isSubmitting ? "送信中..." : "内容を確認する"}
-  </span>
+              <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-subblack text-2xl lg:text-3xl leading-[35px]">
+                {form.formState.isSubmitting ? "送信中..." : "内容を確認する"}
+              </span>
             </button>
 
           </form>

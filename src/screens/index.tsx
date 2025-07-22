@@ -73,25 +73,10 @@ export default function LandingPage() {
       <InterviewSubsection />
     </div>
 
-    <div
-      id="qa"
-      className="bg-subblack"
-    >
-      <QaSubsection />
-    </div>
+    <QaSubsection />
 
-    <div
-      id={SectionCode.RECRUIT}
-      className="bg-subblack bg-fixed"
-      style={{
-        backgroundImage: isMobile ? `url(/images/recruit_bg_sp.png)` : 'url(/images/recruit-bg.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'top',
-        backgroundRepeat: 'no-repeat',
-      }}
-    >
-      <RecruitSubsection />
-    </div>
+
+    <RecruitSubsection />
 
     <div
       id="entry"

@@ -1,7 +1,13 @@
-
-import { Card, CardContent } from "@/components/ui/card.tsx";
+import {Card, CardContent} from "@/components/ui/card.tsx";
+import {SectionCode} from "@/lib/enums.ts";
+import {useMediaQuery} from "react-responsive";
 
 const RecruitSubsection = (): JSX.Element => {
+  const isMobile = useMediaQuery({
+    query: "(max-width: 768px)",
+  })
+
+
   // Data for recruitment requirements
   const recruitmentItems = [
     {
@@ -103,7 +109,17 @@ const RecruitSubsection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative min-h-[100lvh] w-full py-[70px] lg:py-[120px] px-6 flex justify-center">
+    <section id={SectionCode.RECRUIT} className="relative min-h-[100lvh] w-full py-[70px] lg:py-[120px] px-6 flex justify-center overflow-hidden">
+      <div
+        className="fixed bg-subblack lg:absolute max-lg:-z-[2] inset-0"
+        style={{
+          backgroundImage: isMobile ? `url(/images/recruit_bg_sp.png)` : 'url(/images/recruit-bg.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'top',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: isMobile ? 'scroll' : 'fixed',
+        }}
+      />
       <Card className="relative w-full max-w-[1200px] bg-transparent border-0 shadow-none">
         <CardContent className="flex flex-col items-center gap-10 lg:gap-[60px] p-0">
           {/* Section Header */}

@@ -30,8 +30,9 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      // Show back to top button only when scrolled past the banner section (100vh)
-      setShowBackToTop(scrollY > 200);
+      const footer = document.querySelector("footer");
+
+      setShowBackToTop(scrollY > 200 && (footer?.getBoundingClientRect()?.top ?? 0) >= window.innerHeight);
 
       const current = navItems.findLast(item => {
         const section = document.getElementById(item.code);
@@ -56,7 +57,7 @@ export default function Header() {
 
   return <>
     <header className="fixed w-full top-0 left-0 bg-black z-50">
-    <div className="flex items-center justify-between px-4 3xl:pr-0 lg:pl-[30px] min-h-14 lg:min-h-[90px] w-full">
+      <div className="flex items-center justify-between px-4 3xl:pr-0 lg:pl-[30px] min-h-14 lg:min-h-[90px] w-[100lvw]">
       <div className="h-6 lg:h-[35px] gap-2.5 lg:gap-3.5 flex items-center cursor-pointer" onClick={handleBackToTop}>
         <img
           src={logoUrl}
@@ -126,7 +127,7 @@ export default function Header() {
     <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)}/>
   </header>
     {showBackToTop && (
-      <Button className="!fixed bottom-20 right-4 md:bottom-10 md:right-0 w-[50px] block md:w-[83px] h-auto shine aspect-square z-40 cursor-pointer p-0">
+      <Button className="rounded-none !fixed bottom-20 left-[calc(100lvw-66px)] md:left-[calc(100lvw-100px)] md:bottom-10 md:right-0 w-[50px] block md:w-[83px] h-auto shine aspect-square z-40 cursor-pointer p-0">
         <img
           className="w-full h-full object-cover"
           alt="back to top"
