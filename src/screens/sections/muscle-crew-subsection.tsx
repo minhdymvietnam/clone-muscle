@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card.tsx";
 import { GSAPCardStack } from "../../components/ui/gsap-card-stack.tsx";
 import { useMediaQuery } from "react-responsive";
+import { cn } from "@/lib/utils.ts";
 
 const ambassadors = [
   {
@@ -46,6 +47,9 @@ const MuscleCrewSubsection = (): JSX.Element => {
   const isMobile = useMediaQuery({
     query: '(max-width: 768px)'
   });
+  const isDesktop = useMediaQuery({
+    query: '(min-width: 1024px) and (max-width: 1568px)'
+  });
   // Transform ambassador data for card stack
   const cardData = ambassadors.map((ambassador) => ({
     id: ambassador.id,
@@ -54,7 +58,9 @@ const MuscleCrewSubsection = (): JSX.Element => {
         <CardContent className="p-0">
           <img
             src={isMobile ? ambassador.spImage : ambassador.image}
-            className="w-auto object-contain ml-auto mr-0"
+            className={cn("w-auto object-contain ml-auto mr-0", {
+              "brightness-[0.7]": isDesktop
+            })}
             alt="Mask group"
           />
           <div className="absolute w-full md:w-[517px] bottom-[23px] md:bottom-[50px] px-4 md:left-[62px]">
