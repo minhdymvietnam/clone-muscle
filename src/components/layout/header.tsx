@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import {SectionCode} from "@/lib/enums.ts";
 import {Menu} from "@/components/layout/Menu.tsx";
-import {useSmoothScroll} from "@/hooks/useSmoothScroll.ts";
 import {cn} from "@/lib/utils.ts";
 import {Button} from "@/components/ui/button.tsx";
 
@@ -21,10 +20,9 @@ export default function Header() {
   const [activeNav, setActiveNav] = useState(SectionCode.MESSAGE);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const {scrollTo} = useSmoothScroll();
 
   const handleBackToTop = () => {
-    scrollTo(0);
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
   useEffect(() => {

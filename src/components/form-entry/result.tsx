@@ -11,7 +11,7 @@ interface FormEntryResultProps {
 export const FormEntryResult = ({ success, onReset }: FormEntryResultProps): JSX.Element => {
   return (
     <Card className="mx-auto max-w-[1200px] bg-[#00000080] border border-solid border-white backdrop-blur-[10px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(10px)_brightness(100%)] rounded-none">
-      <CardContent className="flex flex-col items-center justify-center gap-[50px] py-[35px] px-[50px]">
+      <CardContent className="flex flex-col items-center justify-center gap-[50px] py-[35px] px-5 lg:px-[50px]">
         <div className="space-y-5 lg:space-y-10 w-full max-w-[546px] mr-[-4.00px]">
           {success ? (
             <>
@@ -69,7 +69,7 @@ export const FormEntryResult = ({ success, onReset }: FormEntryResultProps): JSX
 
         <Button 
           onClick={onReset}
-          className="w-full relative shine text-center gap-10 max-w-[356px] h-[70px] p-5 rounded-[5px] bg-[linear-gradient(270deg,rgba(252,255,0,1)_0%,rgba(254,255,135,1)_50%,rgba(252,255,0,1)_100%)] hover:bg-[linear-gradient(270deg,rgba(252,255,0,1)_0%,rgba(254,255,135,1)_50%,rgba(252,255,0,1)_100%)]">
+          className="w-full relative shine text-center gap-10 max-w-[356px] h-[55px] lg:h-[70px] px-5 rounded-[5px] bg-[linear-gradient(270deg,rgba(252,255,0,1)_0%,rgba(254,255,135,1)_50%,rgba(252,255,0,1)_100%)] hover:bg-[linear-gradient(270deg,rgba(252,255,0,1)_0%,rgba(254,255,135,1)_50%,rgba(252,255,0,1)_100%)]">
           <ChevronLeft className="!size-6 text-white bg-black rounded-full absolute top-1/2 transform -translate-y-1/2 left-5"/>
           <span className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-black text-2xl lg:text-3xl tracking-[0] leading-[35px] pl-10">
             {success ? "採用TOPに戻る" : "再度応募する"}

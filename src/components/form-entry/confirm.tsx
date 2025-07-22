@@ -63,6 +63,7 @@ export const FormEntryConfirm = ({ formData, onConfirm, onEdit }: FormEntryConfi
       onConfirm(); // Still proceed to next step for demo purposes
     } finally {
       setIsSubmitting(false);
+      window.location.href = "#entry";
     }
   };
 
@@ -94,7 +95,7 @@ export const FormEntryConfirm = ({ formData, onConfirm, onEdit }: FormEntryConfi
           onClick={onEdit}
           variant="outline"
           disabled={isSubmitting}
-          className="flex w-full shine max-w-[356px] h-[70px] items-center justify-between p-5 rounded-[5px] border border-solid border-[#ffffff] bg-transparent hover:bg-[#ffffff20] disabled:bg-sublight-gray disabled:text-black disabled:border-none disabled:cursor-not-allowed"
+          className="flex w-full shine max-w-[356px] h-[55px] lg:h-[70px] items-center justify-between px-5 rounded-[5px] border border-solid border-[#ffffff] bg-transparent hover:bg-[#ffffff20] disabled:bg-sublight-gray disabled:text-black disabled:border-none disabled:cursor-not-allowed"
         >
                 <span className="text-white  w-[292px] mt-[-3.50px] mb-[-1.50px] [font-family:'Noto_Sans_JP',Helvetica] font-bold text-2xl lg:text-3xl text-center tracking-[0] leading-[35px]">
                   編集する
@@ -104,7 +105,7 @@ export const FormEntryConfirm = ({ formData, onConfirm, onEdit }: FormEntryConfi
         <Button
           onClick={handleSubmit}
           disabled={isSubmitting}
-          className="flex w-full shine max-w-[356px] h-[70px] items-center justify-between p-5 rounded-[5px] bg-[linear-gradient(270deg,rgba(252,255,0,1)_0%,rgba(254,255,135,1)_50%,rgba(252,255,0,1)_100%)] hover:bg-[linear-gradient(270deg,rgba(252,255,0,0.9)_0%,rgba(254,255,135,0.9)_50%,rgba(252,255,0,0.9)_100%)] disabled:bg-none disabled:bg-sublight-gray disabled:text-black disabled:cursor-not-allowed disabled:justify-center"
+          className="flex w-full shine max-w-[356px] h-[55px] lg:h-[70px] items-center justify-between p-5 rounded-[5px] bg-[linear-gradient(270deg,rgba(252,255,0,1)_0%,rgba(254,255,135,1)_50%,rgba(252,255,0,1)_100%)] hover:bg-[linear-gradient(270deg,rgba(252,255,0,0.9)_0%,rgba(254,255,135,0.9)_50%,rgba(252,255,0,0.9)_100%)] disabled:bg-none disabled:bg-sublight-gray disabled:text-black disabled:cursor-not-allowed disabled:justify-center"
         >
 
           {isSubmitting ? (

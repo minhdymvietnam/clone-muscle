@@ -48,7 +48,7 @@ const QaSubsection = (): JSX.Element => {
         <div className="flex flex-col items-center gap-5">
           <div className="inline-flex items-center">
             <div className="custom-clip-path-both-side font-bold px-10 py-[3px] bg-mainyellow-neon text-black text-[17px] lg:text-xl whitespace-nowrap [font-family:'Noto_Sans_JP',Helvetica]">
-              採用情報
+              よくある質問
             </div>
           </div>
 

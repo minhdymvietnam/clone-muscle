@@ -23,8 +23,8 @@ export const HorizontalScroller = ({
   return (
     <div ref={ref} className={`overflow-hidden ${className}`}>
       <motion.div
-        style={{ x: `${x}%` }}
-        className="flex whitespace-nowrap"
+        animate={{ x: `${x}%` }}
+        transition={{ repeat: Infinity, duration: 2 }}
       >
         {children}
       </motion.div>

@@ -157,7 +157,7 @@ export default function FormEntry() {
   ];
 
   const onSubmit = (data: FormData) => {
-    console.log(data)
+    window.location.href = "#entry";
     setFormData(data);
     setCurrentStep(2);
   };
@@ -176,6 +176,7 @@ export default function FormEntry() {
 
   const handleEdit = () => {
     setCurrentStep(1);
+    window.location.href = "#entry";
   };
 
   const handleReset = () => {
@@ -183,6 +184,7 @@ export default function FormEntry() {
     setFormData(null);
     setSubmitResult(null);
     form.reset();
+    window.location.href = "#entry";
   };
 
   // Render input form
@@ -268,8 +270,8 @@ export default function FormEntry() {
                                 </SelectTrigger>
                                 <SelectContent>
                                   {Array.from(
-                                    {length: 100},
-                                    (_, i) => 2024 - i,
+                                    {length: 61},
+                                    (_, i) => 2010 - i,
                                   ).map((year) => (
                                     <SelectItem
                                       key={year}
@@ -464,7 +466,7 @@ export default function FormEntry() {
             {/* Submit Button */}
             <button
               type="submit"
-              className={cn("w-full py-5 rounded-[3px] shine hover:bg-sublight-gray/90 disabled:opacity-50 disabled:cursor-not-allowed", {
+              className={cn("w-full py-2.5 md:py-5 rounded-[3px] shine hover:bg-sublight-gray/90 disabled:opacity-50 disabled:cursor-not-allowed", {
                 "bg-[linear-gradient(270deg,rgba(252,255,0,1)_0%,rgba(254,255,135,1)_50%,rgba(252,255,0,1)_100%)] hover:bg-[linear-gradient(270deg,rgba(252,255,0,0.9)_0%,rgba(254,255,135,0.9)_50%,rgba(252,255,0,0.9)_100%)]": isDirty && isValid,
                 "bg-sublight-gray": !isDirty || !isValid,
               })}

@@ -34,8 +34,8 @@ export const Menu = ({isOpen, onClose}: MenuProps): JSX.Element => {
                   className="flex flex-col items-start gap-[15px] border-b border-white"
                 >
                   <Button
-                    variant="ghost"
-                    className="flex items-center justify-between w-full p-0 h-auto"
+                    variant="link"
+                    className="flex items-center justify-between w-full p-0 h-auto hover:opacity-80"
                     onClick={() => {
                       window.location.href = item.href;
                       onClose();

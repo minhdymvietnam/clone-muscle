@@ -146,8 +146,8 @@ const IssueSubsection = (): JSX.Element => {
 
             <div className="relative pt-10 lg:pt-60 w-full">
               <div className="lg:absolute w-full lg:bottom-0 lg:left-0 grid grid-cols-2 lg:flex items-center gap-5 justify-between">
-                <img className="w-full h-auto lg:w-auto lg:h-[811px] object-cover" src={isMobile ? imageUrls.left_side_mobile : imageUrls.left_side} alt="Message"/>
-                <img className="w-full h-auto lg:w-auto lg:h-[811px] object-cover" src={isMobile ? imageUrls.right_side_mobile : imageUrls.right_side} alt="Message"/>
+                <img className="w-full h-auto lg:w-auto lg:h-[500px] 2xl:h-[811px] object-cover" src={isMobile ? imageUrls.left_side_mobile : imageUrls.left_side} alt="Message"/>
+                <img className="w-full h-auto lg:w-auto lg:h-[500px] 2xl:h-[811px] object-cover" src={isMobile ? imageUrls.right_side_mobile : imageUrls.right_side} alt="Message"/>
               </div>
             </div>
           </div>
@@ -155,7 +155,7 @@ const IssueSubsection = (): JSX.Element => {
 
         <div className="absolute bottom-0 left-0 flex items-center h-[60px] md:h-fit">
           <HorizontalScroller speed={0.5}>
-            <div className="animate-marquee [-webkit-text-stroke:2px_#fcff00] text-transparent text-[104px] lg:text-[285px] tracking-[0] leading-none lg:leading-[180px] whitespace-nowrap [font-family:'Geo',Helvetica]">
+            <div className="[-webkit-text-stroke:2px_#fcff00] text-transparent text-[104px] lg:text-[285px] tracking-[0] leading-none lg:leading-[180px] whitespace-nowrap [font-family:'Geo',Helvetica]">
               SECURITY IS COOLSECURITY IS COOL
             </div>
           </HorizontalScroller>

@@ -25,7 +25,7 @@ const SelectTrigger = React.forwardRef<
   >
     {children}
     <SelectPrimitive.Icon asChild>
-      <svg className="ml-5 h-2.5 w-2.5" width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg className="ml-2 lg:ml-5 h-2.5 w-2.5" width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M5.72119 8.93359L0.221192 0.933594L11.2212 0.933593L5.72119 8.93359Z" fill="currentColor"/>
       </svg>
     </SelectPrimitive.Icon>
