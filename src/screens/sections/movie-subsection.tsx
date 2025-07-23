@@ -11,13 +11,13 @@ const MovieSubsection = (): JSX.Element => {
             </div>
           </div>
 
-          <h2 className="[font-family:'Teko',Helvetica] font-semibold text-textwhite text-[67px] lg:text-[150px] text-center lg:leading-[150px] whitespace-nowrap">
+          <h2 className="[font-family:'Teko',Helvetica] font-semibold text-textwhite text-[67px] lg:text-[150px] text-center leading-[0.9] lg:leading-[150px] whitespace-nowrap">
             MOVIE
           </h2>
         </div>
 
         <Card className="border-none bg-transparent w-full max-w-[1081px]">
-          <CardContent className="p-0">
+          <CardContent className="p-0 md:max-xl:px-10">
             <iframe
               className="w-full aspect-[3/2]"
               src="https://www.youtube.com/embed/wGCb9P0bU-A"

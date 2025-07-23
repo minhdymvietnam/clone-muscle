@@ -63,7 +63,9 @@ export const FormEntryConfirm = ({ formData, onConfirm, onEdit }: FormEntryConfi
       onConfirm(); // Still proceed to next step for demo purposes
     } finally {
       setIsSubmitting(false);
-      window.location.href = "#entry";
+      setTimeout(() => {
+        window.location.href = "#entry";
+      }, 500)
     }
   };
 

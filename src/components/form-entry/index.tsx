@@ -157,9 +157,11 @@ export default function FormEntry() {
   ];
 
   const onSubmit = (data: FormData) => {
-    window.location.href = "#entry";
     setFormData(data);
     setCurrentStep(2);
+    setTimeout(() => {
+      window.location.href = "#entry";
+    }, 500)
   };
 
   const handleConfirm = async () => {
@@ -171,12 +173,18 @@ export default function FormEntry() {
     } catch (error) {
       setSubmitResult('error');
       setCurrentStep(3);
+    } finally {
+      setTimeout(() => {
+        window.location.href = "#entry";
+      }, 500)
     }
   };
 
   const handleEdit = () => {
     setCurrentStep(1);
-    window.location.href = "#entry";
+    setTimeout(() => {
+      window.location.href = "#entry";
+    }, 500)
   };
 
   const handleReset = () => {
@@ -184,7 +192,9 @@ export default function FormEntry() {
     setFormData(null);
     setSubmitResult(null);
     form.reset();
-    window.location.href = "#entry";
+    setTimeout(() => {
+      window.location.href = "#entry";
+    }, 500)
   };
 
   // Render input form

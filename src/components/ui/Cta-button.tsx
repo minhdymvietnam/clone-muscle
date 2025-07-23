@@ -29,7 +29,7 @@ const CTAButton = () => {
         onClick={() => {
           window.location.href = "#entry";
         }}
-        className="[font-family:'Teko',Helvetica] font-medium text-black text-4xl leading-none shine bg-[#FCFF00] w-full pb-1 pt-3 rounded-sm flex items-center justify-center"
+        className="[font-family:'Teko',Helvetica] font-medium text-black text-4xl leading-none shine bg-[#FCFF00] w-full pb-1 pt-3 rounded-sm flex items-center justify-center border border-subblack"
       >
         ENTRY
       </button>

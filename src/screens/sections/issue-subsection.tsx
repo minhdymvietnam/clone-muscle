@@ -1,6 +1,8 @@
 import {SectionCode} from "@/lib/enums.ts";
-import {HorizontalScroller} from "../../components/ui/horizontal-scroller.tsx";
-import { useMediaQuery } from "react-responsive";
+import {useMediaQuery} from "react-responsive";
+import {useGSAP} from '@gsap/react';
+import {horizontalLoop} from "@/helpers/horizontalLoop.ts";
+import {useRef} from "react";
 
 const imageUrls = {
   background: "/images/issue-bg.png",
@@ -11,7 +13,42 @@ const imageUrls = {
 }
 
 const IssueSubsection = (): JSX.Element => {
+  const boxesContainer = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+  useGSAP(
+    () => {
+      // Target the specific element with id="horizontal-text"
+      const horizontalTextElement = document.getElementById('horizontal-text');
+      if (horizontalTextElement) {
+        // Create multiple copies of the text for seamless looping
+        const textContent = horizontalTextElement.textContent || '';
+        horizontalTextElement.innerHTML = '';
+
+        // Create multiple spans with the same text content
+        for (let i = 0; i < 3; i++) {
+          const span = document.createElement('span');
+          span.textContent = textContent;
+          span.className = 'horizontal-text-item';
+          horizontalTextElement.appendChild(span);
+        }
+
+        // Get all the created spans
+        const textItems = horizontalTextElement.querySelectorAll('.horizontal-text-item');
+
+        // Apply horizontal loop animation
+        horizontalLoop(textItems, {
+          repeat: -1,
+          speed: 2,
+          paddingRight: 50
+        });
+      }
+    },
+    {
+      scope: boxesContainer,
+    }
+  );
+
   return (
     <section className="w-full flex flex-col justify-center overflow-hidden">
       <div className="w-full h-full flex flex-col justify-center px-4 lg:px-0 relative overflow-hidden">
@@ -101,7 +138,7 @@ const IssueSubsection = (): JSX.Element => {
                   </div>
                 </div>
 
-                <div className="font-semibold text-textwhite text-[67px] lg:text-[150px] text-center tracking-[0] lg:leading-[150px] whitespace-nowrap [font-family:'Teko',Helvetica]">
+                <div className="font-semibold text-textwhite text-[67px] lg:text-[150px] text-center tracking-[0] leading-[0.9] lg:leading-[150px] whitespace-nowrap [font-family:'Teko',Helvetica]">
                   MESSAGE
                 </div>
               </div>
@@ -153,12 +190,10 @@ const IssueSubsection = (): JSX.Element => {
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 flex items-center h-[60px] md:h-fit">
-          <HorizontalScroller speed={0.5}>
-            <div className="[-webkit-text-stroke:2px_#fcff00] text-transparent text-[104px] lg:text-[285px] tracking-[0] leading-none lg:leading-[180px] whitespace-nowrap [font-family:'Geo',Helvetica]">
-              SECURITY IS COOLSECURITY IS COOL
-            </div>
-          </HorizontalScroller>
+        <div className="absolute bottom-0 left-0 flex items-center h-[60px] md:h-fit" ref={boxesContainer}>
+          <div id="horizontal-text" className="[-webkit-text-stroke:2px_#fcff00] text-transparent text-[104px] lg:text-[285px] tracking-[0] leading-none lg:leading-[180px] whitespace-nowrap [font-family:'Geo',Helvetica] flex">
+            SECURITY IS COOLSECURITY IS COOL
+          </div>
         </div>
         <div className="absolute bottom-[200px] md:bottom-[90px] right-3 z-10 flex items-center h-fit text-white text-[7px] md:text-xs font-normal">
           Mits OKABE ©  <br />

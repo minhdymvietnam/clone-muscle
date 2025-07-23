@@ -57,7 +57,7 @@ const GoodPointSubsection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative w-full" >
+    <section className="relative w-full md:max-xl:px-10" >
       <div className="flex flex-col items-center w-full py-[70px] lg:py-[120px] px-4 lg:px-0">
         <div className="relative z-10 flex flex-col w-full items-center md:gap-[50px]">
           {/* Section Header */}
@@ -87,7 +87,7 @@ const GoodPointSubsection = (): JSX.Element => {
                   {/* Point Number */}
                   <div className="flex items-center gap-3.5 relative">
                     <div className="relative pl-20 lg:pl-[120px]">
-                      <div className="[-webkit-text-stroke:2px_#ffffff] [font-family:'DIN_2014-Bold',Helvetica] font-bold text-transparent text-[130px] lg:text-[200px] leading-none md:leading-[normal]">
+                      <div className="[-webkit-text-stroke:2px_#ffffff] din-font leading-[115px] lg:leading-[155px] font-bold text-transparent text-[130px] lg:text-[200px] md:leading-[normal]">
                         {point.id}
                       </div>
                       <div className="inline-flex gap-2.5 lg:gap-5 items-center justify-center pl-0 pr-[5px] py-0.5 absolute top-1/2 transform -translate-y-1/2 left-2.5 lg:left-0">
@@ -175,14 +175,14 @@ const GoodPointSubsection = (): JSX.Element => {
           ))}
 
           {/* Benefits Cards - Only shown after the 4th point */}
-          <div className="flex justify-center flex-wrap gap-2 lg:gap-4 w-full max-w-[1250px] mx-auto">
+          <div className="flex justify-center md:max-xl:grid md:max-xl:grid-cols-2 md:max-xl:px-10 flex-wrap gap-2 lg:gap-4 w-full max-w-[1250px] mx-auto">
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="w-1/2 max-md:h-[63px] max-w-[307px] custom-clip-path-both-side-large bg-neon-yellow -mr-6 transform -translate-x-3"
+                className="w-[calc(50%+0.5rem)] max-md:h-[63px] max-w-[307px] md:max-xl:w-full md:max-xl:max-w-full custom-clip-path-both-side-large bg-neon-yellow -mr-6 transform -translate-x-3"
               >
                 <div className="flex items-center justify-center h-full p-0">
-                  <div className="[font-family:'DIN_2014-Bold',Helvetica] font-bold text-black text-[13px] lg:text-xl text-center leading-7 py-4 lg:py-[31px]">
+                  <div className="din-font leading-7 font-bold text-black text-[13px] lg:text-xl text-center py-4 lg:py-[31px]">
                     {isMobile && benefit.spTitle ? benefit.spTitle.split("\n").map((line, i) => (
                       <Fragment key={i}>
                         {line}

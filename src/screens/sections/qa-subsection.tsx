@@ -52,7 +52,7 @@ const QaSubsection = (): JSX.Element => {
             </div>
           </div>
 
-          <h2 className="font-semibold text-white text-[67px] lg:text-[150px] text-center tracking-[0] lg:leading-[150px] whitespace-nowrap [font-family:'Teko',Helvetica]">
+          <h2 className="font-semibold text-white text-[67px] lg:text-[150px] text-center tracking-[0] leading-[0.9] lg:leading-[150px] whitespace-nowrap [font-family:'Teko',Helvetica]">
             Q&amp;A
           </h2>
         </div>

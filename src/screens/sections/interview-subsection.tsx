@@ -42,7 +42,7 @@ const InterviewSubsection = (): JSX.Element => {
             </div>
           </div>
 
-          <h2 className="font-semibold text-white text-[67px] lg:text-[150px] text-center tracking-[0] lg:leading-[150px] whitespace-nowrap [font-family:'Teko',Helvetica]">
+          <h2 className="font-semibold text-white text-[67px] lg:text-[150px] text-center tracking-[0] leading-[0.9] lg:leading-[150px] whitespace-nowrap [font-family:'Teko',Helvetica]">
             INTERVIEW
           </h2>
         </div>
@@ -89,7 +89,7 @@ const InterviewSubsection = (): JSX.Element => {
                 <div className="flex w-[364px] items-center gap-3.5 relative">
                   <div className="relative w-[348px]">
                     <div className="relative pl-20 lg:pl-[120px]">
-                      <div className="[-webkit-text-stroke:2px_#ffffff] [font-family:'DIN_2014-Bold',Helvetica] font-bold text-transparent text-[130px] lg:text-[200px] leading-none">
+                      <div className="[-webkit-text-stroke:2px_#ffffff] din-font leading-[115px] lg:leading-[155px] font-bold text-transparent text-[130px] lg:text-[200px]">
                         0{itemShow?.id}
                       </div>
                       <div className="inline-flex gap-2.5 lg:gap-5 items-center justify-center pl-0 pr-[5px] py-0.5 absolute top-1/2 transform -translate-y-1/2 left-2.5 lg:left-0">
@@ -136,28 +136,33 @@ const InterviewSubsection = (): JSX.Element => {
             setItemShow(null);
           }
         }}>
-          <DialogContent className="bg-subblack border border-solid border-[#fcff00] px-8 max-h-[90vh] overflow-x-hidden max-w-[calc(100vw-32px)]">
-            <div className="flex flex-col items-center gap-5">
-              <div className="flex flex-col">
+          <DialogContent className="bg-subblack border border-solid border-[#fcff00] px-4 pt-7 pb-0 h-max max-h-dvh overflow-hidden max-w-[calc(100vw-32px)]">
+            <div className="flex flex-col items-center justify-between gap-5">
+              <div className="flex flex-col gap-5">
                 <div className="relative pl-20">
-                  <div className="[-webkit-text-stroke:2px_#ffffff] [font-family:'DIN_2014-Bold',Helvetica] font-bold text-transparent text-[150px] leading-none">
+                  <div className="[-webkit-text-stroke:2px_#ffffff] din-font leading-[95px] font-bold text-transparent text-[120px]">
                     0{itemShow?.id}
                   </div>
-                  <div className="inline-flex gap-4 items-center justify-center pl-0 pr-[5px] py-0.5 absolute top-1/2 transform -translate-y-1/2 left-0">
+                  <div className="inline-flex gap-4 items-center justify-center pl-0 pr-[5px] py-0.5 absolute top-1/2 transform -translate-y-1/2 left-2">
                     <div
                       className="w-2 transform -skew-x-[20deg] h-8 bg-mainyellow-neon "
                     />
-                    <div className="[font-family:'Inter',Helvetica] font-semibold text-white text-[30px] leading-none bg-subblack">
+                    <div className="[font-family:'Inter',Helvetica] font-semibold text-white text-[25px] leading-none bg-subblack">
                       CASE
                     </div>
                   </div>
                 </div>
 
-                <div className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-sm text-justify tracking-normal leading-[1.75] whitespace-pre-line">
+                <div className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-xs text-justify tracking-normal leading-[1.75] whitespace-pre-line">
                   {itemShow?.description}
                 </div>
               </div>
-              <img className="w-3/4 h-auto object-cover" src={itemShow?.imagePath} alt={itemShow?.titleLines[0].text} />
+                <div className={`bg-[url(${itemShow?.imagePath})] w-[230px] mx-auto h-[285px] `} style={{
+                  backgroundImage: `url(${itemShow?.imagePath})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "100%",
+                  backgroundPosition: "top"
+                }} />
             </div>
 
             <DialogClose asChild className="absolute w-[42px] aspect-square top-0 right-0 bg-mainyellow-neon p-0 hover:bg-mainyellow-neon/90 focus:bg-mainyellow-neon/90">
