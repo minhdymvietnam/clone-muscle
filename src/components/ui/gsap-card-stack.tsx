@@ -97,14 +97,12 @@ export const GSAPCardStack = ({
 
       {/* Cards container */}
       <div className="flex relative items-center justify-center" ref={containerRef}>
-        <div className="relative w-full max-w-[1644px]">
+        <div className="relative w-full max-w-[1644px] flex">
           {/* AMBASSADOR text */}
-          <div className="invisible md:visible absolute top-[267px] left-[-218px] -rotate-90 [font-family:'Teko',Helvetica] font-medium text-black text-[150px] tracking-[0] leading-[normal] z-10">
-            AMBASSADOR
-          </div>
+          <div className="hidden md:block flex-1" style={{backgroundImage: "url(/images/AMBASSADOR.png)", backgroundRepeat: "no-repeat", backgroundPosition: "center right", backgroundSize: "auto 90%"}} />
 
           {/* Cards stack */}
-          <div ref={cardsRef} className="cards md:ml-36 w-full md:w-11/12 aspect-[0.62/1] md:h-[752px] relative rounded-[20px]  overflow-hidden">
+          <div ref={cardsRef} className="cards w-full md:w-10/12 lg:w-11/12 h-[75lvh] relative rounded-[20px] overflow-hidden mr-0 ml-auto">
             {cards.map((card, index) => (
               <div
                 key={card.id}

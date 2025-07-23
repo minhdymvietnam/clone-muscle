@@ -1,7 +1,5 @@
-import { Card, CardContent } from "@/components/ui/card.tsx";
-import { GSAPCardStack } from "../../components/ui/gsap-card-stack.tsx";
-import { useMediaQuery } from "react-responsive";
-import { cn } from "@/lib/utils.ts";
+import {GSAPCardStack} from "../../components/ui/gsap-card-stack.tsx";
+import {useMediaQuery} from "react-responsive";
 
 const ambassadors = [
   {
@@ -47,35 +45,25 @@ const MuscleCrewSubsection = (): JSX.Element => {
   const isMobile = useMediaQuery({
     query: '(max-width: 768px)'
   });
-  const isDesktop = useMediaQuery({
-    query: '(min-width: 1024px) and (max-width: 1568px)'
-  });
   // Transform ambassador data for card stack
   const cardData = ambassadors.map((ambassador) => ({
     id: ambassador.id,
     content: (
-      <Card className="w-full max-2xl:md:w-11/12 aspect-[1/2] bg-black border border-[#fcff00]  overflow-hidden">
-        <CardContent className="p-0">
-          <img
-            src={isMobile ? ambassador.spImage : ambassador.image}
-            className={cn("w-auto object-contain ml-auto mr-0", {
-              "brightness-[0.7]": isDesktop
-            })}
-            alt="Mask group"
-          />
-          <div className="absolute w-full md:w-[517px] bottom-[23px] md:bottom-[50px] px-4 md:left-[62px]">
-            <div className="flex flex-col w-full md:w-[517px] items-start gap-[13px] md:gap-[30px]">
-              <h3 className="self-stretch [font-family:'Noto_Sans_JP',Helvetica] font-medium text-[#ffffff] text-[32px] md:text-[55px] tracking-[0] leading-[normal] whitespace-pre-wrap">
-                {ambassador.title}
-              </h3>
-              <p className="self-stretch font-medium text-[#ffffff] text-sm md:text-xl text-justify leading-[1.75] md:leading-[35px] [font-family:'Noto_Sans_JP',Helvetica] tracking-[0] whitespace-pre-wrap">
-                {ambassador.description}
-                {ambassador?.secDescription && <span className="text-xs md:text-sm block">{ambassador.secDescription}</span>}
-              </p>
-            </div>
+      <div className="w-full h-full bg-black border border-[#fcff00] rounded-t-[20px] overflow-hidden">
+        <div className="relative w-full h-full max-md:!bg-cover max-md:!bg-[top_center]" style={{backgroundImage: `url(${isMobile ? ambassador.spImage : ambassador.image})`, backgroundSize: "auto 100%", backgroundPosition: isMobile ? "center" : "right center", backgroundRepeat: "no-repeat"}}/>
+
+        <div className="absolute w-full lg:w-1/2 bottom-[23px] lg:bottom-[50px] px-4 xl:left-[62px]">
+          <div className="flex flex-col w-full items-start gap-[13px] md:gap-[30px]">
+            <h3 className="self-stretch [font-family:'Noto_Sans_JP',Helvetica] font-medium text-[#ffffff] text-[32px] lg:text-[55px] tracking-[0] leading-[normal] whitespace-pre-wrap">
+              {ambassador.title}
+            </h3>
+            <p className="self-stretch font-medium text-[#ffffff] text-sm xl:text-xl text-justify leading-[1.75] md:leading-[35px] [font-family:'Noto_Sans_JP',Helvetica] tracking-[0] whitespace-pre-wrap">
+              {ambassador.description}
+              {ambassador?.secDescription && <span className="text-xs md:text-sm block">{ambassador.secDescription}</span>}
+            </p>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     )
   }));
 

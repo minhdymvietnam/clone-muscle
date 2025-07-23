@@ -83,7 +83,7 @@ const GoodPointSubsection = (): JSX.Element => {
                   }`}
               >
                 {/* Point Content */}
-                <div className="flex flex-col w-full max-w-[597px] items-start gap-6 lg:gap-10">
+                <div className="flex flex-col w-full max-w-[597px] items-start gap-6 lg:px-2.5 lg:gap-10">
                   {/* Point Number */}
                   <div className="flex items-center gap-3.5 relative">
                     <div className="relative pl-20 lg:pl-[120px]">
@@ -182,7 +182,7 @@ const GoodPointSubsection = (): JSX.Element => {
                 className="w-[calc(50%+0.5rem)] max-md:h-[63px] max-w-[307px] md:max-xl:w-full md:max-xl:max-w-full custom-clip-path-both-side-large bg-neon-yellow -mr-6 transform -translate-x-3"
               >
                 <div className="flex items-center justify-center h-full p-0">
-                  <div className="din-font leading-7 font-bold text-black text-[13px] lg:text-xl text-center py-4 lg:py-[31px]">
+                  <div className="din-font lg:leading-7 font-bold text-black text-[13px] lg:text-xl text-center py-4 lg:py-[31px]">
                     {isMobile && benefit.spTitle ? benefit.spTitle.split("\n").map((line, i) => (
                       <Fragment key={i}>
                         {line}
