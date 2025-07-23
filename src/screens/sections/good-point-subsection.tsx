@@ -79,22 +79,22 @@ const GoodPointSubsection = (): JSX.Element => {
             <div key={index} className={cn("w-full max-w-[1560px] mb-[41px]", point.alignment === "right" ? "mr-auto" : "ml-auto")}>
               <div
                 key={point.id}
-                className={`flex flex-col w-full justify-between gap-7 ${point.alignment === "right" ? "lg:flex-row-reverse" : "lg:flex-row"
+                className={`flex flex-col w-full justify-between md:items-center gap-7 ${point.alignment === "right" ? "md:flex-row-reverse" : "md:flex-row"
                   }`}
               >
                 {/* Point Content */}
-                <div className="flex flex-col w-full max-w-[597px] items-start gap-6 lg:px-2.5 lg:gap-10">
+                <div className="flex flex-col w-full md:w-2/5 max-w-[597px] items-start gap-6 xl:px-[30px] 3xl:px-2.5 xl:gap-10">
                   {/* Point Number */}
                   <div className="flex items-center gap-3.5 relative">
-                    <div className="relative pl-20 lg:pl-[120px]">
-                      <div className="[-webkit-text-stroke:2px_#ffffff] din-font leading-[115px] lg:leading-[155px] font-bold text-transparent text-[130px] lg:text-[200px] md:leading-[normal]">
+                    <div className="relative pl-20 xl:pl-[120px]">
+                      <div className="[-webkit-text-stroke:2px_#ffffff] din-font leading-[115px] xl:leading-[155px] font-bold text-transparent text-[130px] xl:text-[200px] md:leading-[normal]">
                         {point.id}
                       </div>
-                      <div className="inline-flex gap-2.5 lg:gap-5 items-center justify-center pl-0 pr-[5px] py-0.5 absolute top-1/2 transform -translate-y-1/2 left-2.5 lg:left-0">
+                      <div className="inline-flex gap-2.5 xl:gap-5 items-center justify-center pl-0 pr-[5px] py-0.5 absolute top-1/2 transform -translate-y-1/2 left-2.5 xl:left-0">
                         <div
-                          className="w-2 lg:w-3 transform -skew-x-[20deg] h-8 lg:h-[42px] bg-mainyellow-neon "
+                          className="w-2 xl:w-3 transform -skew-x-[20deg] h-8 xl:h-[42px] bg-mainyellow-neon "
                         />
-                        <div className="mt-[-1px] [font-family:'Inter',Helvetica] font-semibold text-white text-[26px] lg:text-[40px] leading-[normal] whitespace-nowrap bg-subblack">
+                        <div className="mt-[-1px] [font-family:'Inter',Helvetica] font-semibold text-white text-[26px] xl:text-[40px] leading-[normal] whitespace-nowrap bg-subblack">
                           POINT
                         </div>
                       </div>
@@ -102,12 +102,12 @@ const GoodPointSubsection = (): JSX.Element => {
                   </div>
 
                   {/* Point Title */}
-                  <div className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-black text-[25px] lg:text-[40px] leading-[normal] whitespace-nowrap px-3 pr-8 lg:px-5 lg:pr-20 py-1.5 lg:py-[15px] custom-clip-path-right bg-neon-yellow">
+                  <div className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-black text-[25px] xl:text-[40px] leading-[normal] whitespace-nowrap px-3 pr-8 xl:px-5 xl:pr-20 py-1.5 xl:py-[15px] custom-clip-path-right bg-neon-yellow">
                     {point.title}
                   </div>
 
                   {/* Point Description */}
-                  <div className="text-base md:text-xl !leading-[1.75] text-white text-justify max-w-[550px]">
+                  <div className="text-base xl:text-xl !leading-[1.75] text-white text-justify max-w-[550px]">
                     {point.description.split("\n").map((line, i) => (
                       <Fragment key={i}>
                         {line}
@@ -118,7 +118,7 @@ const GoodPointSubsection = (): JSX.Element => {
                 </div>
 
                 {/* Image Section */}
-                <div className="relative w-full">
+                <div className="relative w-full max-w-[935px]">
                   {
                     isMobile ? (
                       <div

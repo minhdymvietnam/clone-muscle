@@ -50,14 +50,14 @@ const MuscleCrewSubsection = (): JSX.Element => {
     id: ambassador.id,
     content: (
       <div className="w-full h-full bg-black border border-[#fcff00] rounded-t-[20px] overflow-hidden">
-        <div className="relative w-full h-full max-md:!bg-cover max-md:!bg-[top_center]" style={{backgroundImage: `url(${isMobile ? ambassador.spImage : ambassador.image})`, backgroundSize: "auto 100%", backgroundPosition: isMobile ? "center" : "right center", backgroundRepeat: "no-repeat"}}/>
+        <div className="relative w-full h-full max-md:!bg-cover max-md:!bg-[top_center] max-xl:lg:!bg-center" style={{backgroundImage: `url(${isMobile ? ambassador.spImage : ambassador.image})`, backgroundSize: "auto 100%", backgroundPosition: isMobile ? "center" : "right center", backgroundRepeat: "no-repeat"}}/>
 
-        <div className="absolute w-full lg:w-1/2 bottom-[23px] lg:bottom-[50px] px-4 xl:left-[62px]">
+        <div className="absolute w-full lg:w-1/2 max-w-[517px] bottom-[23px] lg:bottom-[50px] px-4 xl:left-[62px]">
           <div className="flex flex-col w-full items-start gap-[13px] md:gap-[30px]">
             <h3 className="self-stretch [font-family:'Noto_Sans_JP',Helvetica] font-medium text-[#ffffff] text-[32px] lg:text-[55px] tracking-[0] leading-[normal] whitespace-pre-wrap">
               {ambassador.title}
             </h3>
-            <p className="self-stretch font-medium text-[#ffffff] text-sm xl:text-xl text-justify leading-[1.75] md:leading-[35px] [font-family:'Noto_Sans_JP',Helvetica] tracking-[0] whitespace-pre-wrap">
+            <p className="self-stretch font-medium text-[#ffffff] text-sm xl:text-xl text-justify !leading-[1.75] [font-family:'Noto_Sans_JP',Helvetica] tracking-[0] whitespace-pre-wrap">
               {ambassador.description}
               {ambassador?.secDescription && <span className="text-xs md:text-sm block">{ambassador.secDescription}</span>}
             </p>
