@@ -83,8 +83,9 @@ export default function LandingPage() {
       className="bg-black"
       style={{
         backgroundImage: `url(/images/entry_bg.png)`,
-        backgroundSize: 'contain',
+        backgroundSize: '100%',
         backgroundPosition: 'top',
+        backgroundRepeat: "repeat-y"
       }}
     >
       <EntrySubsection />
