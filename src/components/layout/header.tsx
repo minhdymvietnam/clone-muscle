@@ -56,7 +56,7 @@ export default function Header() {
   return <>
     <header className="fixed w-full top-0 left-0 bg-black z-50">
       <div className="flex items-center justify-between px-4 3xl:pr-0 lg:pl-[30px] min-h-14 lg:min-h-[90px] w-[100lvw]">
-      <div className="h-6 lg:h-[35px] gap-2.5 lg:gap-3.5 flex items-center cursor-pointer" onClick={handleBackToTop}>
+      <a className="h-6 lg:h-[35px] gap-2.5 lg:gap-3.5 flex items-center cursor-pointer" href="https://ex-pr.com/" target="_blank">
         <img
           src={logoUrl}
           className="w-auto h-full object-cover"
@@ -66,7 +66,7 @@ export default function Header() {
           className="[font-family:'Inter',Helvetica] font-bold text-white text-[15px] lg:text-xl tracking-[0] leading-[normal] whitespace-nowrap">
           中途採用ページ
         </div>
-      </div>
+      </a>
 
       <div className="hidden 3xl:flex items-center gap-5">
         <div className="flex h-full items-start gap-9">

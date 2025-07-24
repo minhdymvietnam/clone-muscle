@@ -91,7 +91,7 @@ export const FormEntryConfirm = ({ formData, onConfirm, onEdit }: FormEntryConfi
       </Card>
 
       {/* Action Buttons */}
-      <div className="flex flex-col items-center lg:justify-center lg:flex-row gap-2.5 lg:gap-[47px] w-full mx-auto mt-[50px] lg:mt-[60px] max-w-[742px]">
+      <div className="flex flex-col items-center lg:justify-center lg:flex-row gap-5 lg:gap-[47px] w-full mx-auto mt-[50px] lg:mt-[60px] max-w-[742px]">
         <Button
           onClick={onEdit}
           variant="outline"
