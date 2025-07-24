@@ -86,23 +86,9 @@ const InterviewSubsection = (): JSX.Element => {
           <Card className="relative border-none">
             <div className="flex flex-col w-[1200px] items-end gap-2.5 pt-[60px] pb-16 px-[72px] relative bg-subblack border border-solid border-[#fcff00]">
               <div className="flex flex-col w-[624.59px] items-start gap-[50px] relative flex-[0_0_auto]">
-                <div className="flex w-[364px] items-center gap-3.5 relative">
-                  <div className="relative w-[348px]">
-                    <div className="relative pl-20 lg:pl-[120px]">
-                      <div className="[-webkit-text-stroke:2px_#ffffff] din-font leading-[115px] lg:leading-[155px] font-bold text-transparent text-[130px] lg:text-[200px]">
-                        0{itemShow?.id}
-                      </div>
-                      <div className="inline-flex gap-2.5 lg:gap-5 items-center justify-center pl-0 pr-[5px] py-0.5 absolute top-1/2 transform -translate-y-1/2 left-2.5 lg:left-0">
-                        <div
-                          className="w-2 lg:w-3 transform -skew-x-[20deg] h-8 lg:h-[42px] bg-mainyellow-neon "
-                        />
-                        <div className="mt-[-1px] [font-family:'Inter',Helvetica] font-semibold text-white text-[26px] lg:text-[40px] leading-[normal] whitespace-nowrap bg-subblack">
-                          CASE
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+	              <div className="max-w-[364px] w-3/5 ">
+		              <img src={`/images/point-0${itemShow?.id}.png`} width={364} height={155} alt={itemShow?.description} className="w-full h-auto" />
+	              </div>
 
                 <CardContent className="flex items-start gap-[60px] w-full p-0">
                   <div className="flex flex-col w-[624.59px] items-start gap-[15px] relative">
@@ -139,25 +125,15 @@ const InterviewSubsection = (): JSX.Element => {
           <DialogContent className="bg-subblack border border-solid border-[#fcff00] px-4 pt-7 pb-0 h-max max-h-dvh overflow-hidden max-w-[calc(100vw-32px)]">
             <div className="flex flex-col items-center justify-between gap-5">
               <div className="flex flex-col gap-5">
-                <div className="relative pl-20">
-                  <div className="[-webkit-text-stroke:2px_#ffffff] din-font leading-[95px] font-bold text-transparent text-[120px]">
-                    0{itemShow?.id}
-                  </div>
-                  <div className="inline-flex gap-4 items-center justify-center pl-0 pr-[5px] py-0.5 absolute top-1/2 transform -translate-y-1/2 left-2">
-                    <div
-                      className="w-2 transform -skew-x-[20deg] h-8 bg-mainyellow-neon "
-                    />
-                    <div className="[font-family:'Inter',Helvetica] font-semibold text-white text-[25px] leading-none bg-subblack">
-                      CASE
-                    </div>
-                  </div>
-                </div>
+	              <div className="max-w-[364px] w-3/5 ">
+		              <img src={`/images/point-0${itemShow?.id}.png`} width={364} height={155} alt={itemShow?.description} className="w-full h-auto" />
+	              </div>
 
                 <div className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-xs text-justify tracking-normal leading-[1.75] whitespace-pre-line">
                   {itemShow?.description}
                 </div>
               </div>
-                <div className={`bg-[url(${itemShow?.imagePath})] w-[230px] mx-auto h-[285px] `} style={{
+                <div className={`w-[230px] mx-auto h-[285px] `} style={{
                   backgroundImage: `url(${itemShow?.imagePath})`,
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "100%",

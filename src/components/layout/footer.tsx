@@ -3,10 +3,10 @@ const logoUrl = "/images/logo.png"
 export default function Footer() {
   return <footer className="flex max-md:flex-col max-md:gap-[26px] items-center justify-between bg-subblack px-[30px] py-[15px]">
     <div className="flex items-center gap-[14px]">
-      <a href="https://ex-pr.com/" target="_blank" rel="noopener noreferrer">
+      <a href="https://ex-pr.com/" target="_blank" rel="noopener noreferrer" className="w-fit">
         <img
           src={logoUrl}
-          className="w-52 h-[35px] object-cover"
+          className="w-auto h-[35px] object-contain"
           alt="Img fv logo"
         />
       </a>

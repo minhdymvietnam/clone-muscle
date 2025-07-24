@@ -2,7 +2,6 @@ import {ChevronRight} from "lucide-react";
 import {Button} from "../../components/ui/button";
 import {Card, CardContent} from "../../components/ui/card";
 import {useState} from "react";
-import {cn} from "@/lib/utils.ts";
 
 type FormData = {
   name: string;
@@ -92,22 +91,21 @@ export const FormEntryConfirm = ({ formData, onConfirm, onEdit }: FormEntryConfi
       </Card>
 
       {/* Action Buttons */}
-      <div className="flex flex-col items-center lg:flex-row gap-2.5 w-full mx-auto mt-[50px] lg:mt-[60px] max-w-[742px]">
+      <div className="flex flex-col items-center lg:justify-center lg:flex-row gap-2.5 lg:gap-[47px] w-full mx-auto mt-[50px] lg:mt-[60px] max-w-[742px]">
         <Button
           onClick={onEdit}
           variant="outline"
           disabled={isSubmitting}
-          className="flex w-full shine max-w-[356px] h-[55px] lg:h-[70px] items-center justify-between px-5 rounded-[5px] border border-solid border-[#ffffff] bg-transparent hover:bg-[#ffffff20] disabled:bg-sublight-gray disabled:text-black disabled:border-none disabled:cursor-not-allowed"
+          className="flex shine w-full max-w-[300px] lg:max-w-[253px] h-[55px] lg:h-[70px] items-center justify-between px-5 rounded-[5px] border border-solid border-[#ffffff] bg-transparent hover:bg-[#ffffff20] disabled:bg-sublight-gray disabled:text-black disabled:border-none disabled:cursor-not-allowed"
         >
-                <span className="text-white  w-[292px] mt-[-3.50px] mb-[-1.50px] [font-family:'Noto_Sans_JP',Helvetica] font-bold text-2xl lg:text-3xl text-center tracking-[0] leading-[35px]">
+                <span className="text-white w-full mt-[-3.50px] mb-[-1.50px] [font-family:'Noto_Sans_JP',Helvetica] font-normal text-2xl lg:text-3xl text-center tracking-[0] leading-[35px]">
                   編集する
                 </span>
-          <ChevronRight className={cn("!size-6 text-black bg-white rounded-full", {"text-white bg-black": isSubmitting})}/>
         </Button>
         <Button
           onClick={handleSubmit}
           disabled={isSubmitting}
-          className="flex w-full shine max-w-[356px] h-[55px] lg:h-[70px] items-center justify-between p-5 rounded-[5px] bg-[linear-gradient(270deg,rgba(252,255,0,1)_0%,rgba(254,255,135,1)_50%,rgba(252,255,0,1)_100%)] hover:bg-[linear-gradient(270deg,rgba(252,255,0,0.9)_0%,rgba(254,255,135,0.9)_50%,rgba(252,255,0,0.9)_100%)] disabled:bg-none disabled:bg-sublight-gray disabled:text-black disabled:cursor-not-allowed disabled:justify-center"
+          className="flex relative max-lg:-order-1 w-full shine max-w-[400px] md:max-w-[356px] h-[55px] lg:h-[70px] items-center justify-center p-5 rounded-[5px] bg-[linear-gradient(270deg,rgba(252,255,0,1)_0%,rgba(254,255,135,1)_50%,rgba(252,255,0,1)_100%)] hover:bg-[linear-gradient(270deg,rgba(252,255,0,0.9)_0%,rgba(254,255,135,0.9)_50%,rgba(252,255,0,0.9)_100%)] disabled:bg-none disabled:bg-sublight-gray disabled:text-black disabled:cursor-not-allowed disabled:justify-center"
         >
 
           {isSubmitting ? (
@@ -121,10 +119,10 @@ export const FormEntryConfirm = ({ formData, onConfirm, onEdit }: FormEntryConfi
               <rect x="7.62109" y="33.5547" width="3.16667" height="9.5" rx="1.58333" transform="rotate(-135 7.62109 33.5547)" fill="#D9D9D9"/>
               <rect x="27.7734" y="13.4023" width="3.16667" height="9.5" rx="1.58333" transform="rotate(-135 27.7734 13.4023)" fill="#D9D9D9"/>
             </svg>
-          ) : (<><span className="text-black w-[292px] mt-[-3.50px] mb-[-1.50px] [font-family:'Noto_Sans_JP',Helvetica] font-bold text-2xl lg:text-3xl text-center tracking-[0] leading-[35px]">
+          ) : (<><span className="text-black mt-[-3.50px] mb-[-1.50px] [font-family:'Noto_Sans_JP',Helvetica] font-bold text-2xl lg:text-3xl text-center tracking-[0] leading-[35px]">
                   応募する
                 </span>
-              <ChevronRight className="!size-6 text-white bg-black rounded-full"/></>
+              <ChevronRight className="!size-6 text-white bg-black rounded-full absolute top-1/2 transform -translate-y-1/2 right-4 lg:right-6"/></>
           )}
         </Button>
       </div>

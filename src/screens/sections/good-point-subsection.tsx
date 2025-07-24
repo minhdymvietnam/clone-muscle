@@ -85,20 +85,8 @@ const GoodPointSubsection = (): JSX.Element => {
                 {/* Point Content */}
                 <div className="flex flex-col w-full md:w-2/5 max-w-[597px] items-start gap-6 xl:px-[30px] 3xl:px-2.5 xl:gap-10">
                   {/* Point Number */}
-                  <div className="flex items-center gap-3.5 relative">
-                    <div className="relative pl-20 xl:pl-[120px]">
-                      <div className="[-webkit-text-stroke:2px_#ffffff] din-font leading-[115px] xl:leading-[155px] font-bold text-transparent text-[130px] xl:text-[200px] md:leading-[normal]">
-                        {point.id}
-                      </div>
-                      <div className="inline-flex gap-2.5 xl:gap-5 items-center justify-center pl-0 pr-[5px] py-0.5 absolute top-1/2 transform -translate-y-1/2 left-2.5 xl:left-0">
-                        <div
-                          className="w-2 xl:w-3 transform -skew-x-[20deg] h-8 xl:h-[42px] bg-mainyellow-neon "
-                        />
-                        <div className="mt-[-1px] [font-family:'Inter',Helvetica] font-semibold text-white text-[26px] xl:text-[40px] leading-[normal] whitespace-nowrap bg-subblack">
-                          POINT
-                        </div>
-                      </div>
-                    </div>
+                  <div className="max-w-[364px] w-3/5 ">
+                    <img src={`/images/point-${point.id}.png`} width={364} height={155} alt={point.title} className="w-full h-auto" />
                   </div>
 
                   {/* Point Title */}

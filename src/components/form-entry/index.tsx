@@ -1,4 +1,4 @@
-import {Fragment, useState, useRef, useEffect} from "react";
+import {Fragment, useEffect, useRef, useState} from "react";
 import {Card, CardContent} from "@/components/ui/card.tsx";
 import {Badge} from "@/components/ui/badge.tsx";
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select.tsx";
@@ -11,6 +11,7 @@ import {z} from "zod";
 import {FormEntryConfirm} from "./confirm";
 import {FormEntryResult} from "./result";
 import {cn} from "@/lib/utils.ts";
+import {useSmoothScrollToCenter} from "@/hooks/useSmoothScrollToCenter.ts";
 
 // Form validation schema
 const formSchema = z.object({
@@ -82,12 +83,37 @@ export default function FormEntry() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData | null>(null);
   const [submitResult, setSubmitResult] = useState<'success' | 'error' | null>(null);
+  const {scrollToElementByRef} = useSmoothScrollToCenter();
 
   // Create refs for select fields
+  const nameRef = useRef<HTMLInputElement>(null);
+  const furiganaRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
   const birthYearRef = useRef<HTMLButtonElement>(null);
   const birthMonthRef = useRef<HTMLButtonElement>(null);
   const birthDayRef = useRef<HTMLButtonElement>(null);
   const prefectureRef = useRef<HTMLButtonElement>(null);
+  const muscleFelingsRef = useRef<HTMLTextAreaElement>(null);
+  const privacyPolicyRef = useRef<HTMLButtonElement>(null);
+
+  const getFieldRef = (fieldName: keyof FormData) => {
+    const refMap = {
+      name: nameRef,
+      furigana: furiganaRef,
+      email: emailRef,
+      phone: phoneRef,
+      birthYear: birthYearRef,
+      birthMonth: birthMonthRef,
+      birthDay: birthDayRef,
+      prefecture: prefectureRef,
+      muscleFeelings: muscleFelingsRef,
+      privacyPolicy: privacyPolicyRef
+    };
+    return refMap[fieldName];
+  };
+
+
 
   const form = useForm<FormData>({
     mode: "onChange",
@@ -112,20 +138,31 @@ export default function FormEntry() {
 
   // Focus first invalid select field
   useEffect(() => {
-    if (form.formState.isSubmitted) {
-      const errors = form.formState.errors;
-      
-      if (errors.birthYear && birthYearRef.current) {
-        birthYearRef.current.focus();
-      } else if (errors.birthMonth && birthMonthRef.current) {
-        birthMonthRef.current.focus();
-      } else if (errors.birthDay && birthDayRef.current) {
-        birthDayRef.current.focus();
-      } else if (errors.prefecture && prefectureRef.current) {
-        prefectureRef.current.focus();
+    if (form.formState.isSubmitted && Object.keys(form.formState.errors).length > 0) {
+      const fieldOrder: (keyof FormData)[] = [
+        'name', 'furigana', 'email', 'phone',
+        'birthYear', 'birthMonth', 'birthDay',
+        'prefecture', 'muscleFeelings', 'privacyPolicy'
+      ];
+
+      // Find first field with error
+      const firstErrorField = fieldOrder.find(field => form.formState.errors[field]);
+
+      if (firstErrorField) {
+        const fieldRef = getFieldRef(firstErrorField);
+        if (fieldRef?.current) {
+          // Scroll to center first
+          scrollToElementByRef(fieldRef);
+
+          // Focus after scroll animation completes
+          setTimeout(() => {
+            fieldRef.current?.focus();
+          }, 500); // Adjust timing as needed
+        }
       }
     }
-  }, [form.formState.errors, form.formState.isSubmitted]);
+  }, [form.formState.errors, form.formState.isSubmitted, scrollToElementByRef]);
+
 
   const formFields = [
     {label: "氏名", placeholder: "山田太郎", required: true, name: "name"},
@@ -400,11 +437,16 @@ export default function FormEntry() {
                         placeholder={field.placeholder}
                       />
                     ) : (
-                      <Input
-                        {...form.register(field.name as keyof FormData)}
-                        className={cn("w-full max-w-[768px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none p-[15px] [font-family:'Noto_Sans_JP',Helvetica] font-normal !text-md lg:!text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] placeholder:text-[#FF4B4B]": form.formState.errors[field.name as keyof FormData]})}
-                        placeholder={field.placeholder}
-                      />
+                      <Controller control={form.control} render={({field: controllerField}) => (
+                        <Input
+                          ref={field.name === 'name' ? nameRef : field.name === 'furigana' ? furiganaRef : field.name === 'email' ? emailRef : field.name === 'phone' ? phoneRef : undefined}
+                          name={field.name}
+                          value={controllerField.value as string}
+                          onChange={controllerField.onChange}
+                          className={cn("w-full max-w-[768px] h-[50px] bg-[#ffffff1a] border border-solid border-[#ffffff] rounded-none p-[15px] [font-family:'Noto_Sans_JP',Helvetica] font-normal !text-md lg:!text-[17px]", {"bg-[#FF4B4B] bg-opacity-20 border-[#FF4B4B] placeholder:text-[#FF4B4B]": form.formState.errors[field.name as keyof FormData]})}
+                          placeholder={field.placeholder}
+                        />
+                      )} name={field.name as keyof FormData}/>
                     )}
                     {field.name !== 'birth' && form.formState.errors[field.name as keyof FormData] && (
                       <p className="text-[#FF4B4B] text-xs lg:text-sm inline-flex gap-2.5 items-center mt-1">

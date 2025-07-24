@@ -37,7 +37,7 @@ const ambassadors = [
     description: "山岸秀匡さんによる筋肉セミナー(不定期)への参加機会や、JINさんと共に現場で働くチャンス、持田トレーナーによる特別トレーニング指導など、他では体験できない貴重な機会が待っています。 働きながら、筋肉を高め、発信する。そんな唯一無二のキャリアが、ここにはあります。",
     secDescription: "※内容・実施時期は変更・中止となる場合がございます。",
     image: "/images/muscle-crew-5.png",
-    spImage: "/images/muscle-crew-5.png",
+    spImage: "/images/muscle-crew-5-sp.png",
   }
 ]
 
@@ -50,7 +50,7 @@ const MuscleCrewSubsection = (): JSX.Element => {
     id: ambassador.id,
     content: (
       <div className="w-full h-full bg-black border border-[#fcff00] rounded-t-[20px] overflow-hidden">
-        <div className="relative w-full h-full max-md:!bg-cover max-md:!bg-[top_center] max-xl:lg:!bg-center" style={{backgroundImage: `url(${isMobile ? ambassador.spImage : ambassador.image})`, backgroundSize: "auto 100%", backgroundPosition: isMobile ? "center" : "right center", backgroundRepeat: "no-repeat"}}/>
+        <div className="relative w-full h-full max-md:!bg-cover max-md:!bg-[top_center] max-xl:lg:!bg-center" style={{backgroundImage: `url(${isMobile ? ambassador.spImage : ambassador.image})`, backgroundSize: ambassador.id === 5 ? "cover" : "auto 100%", backgroundPosition: isMobile ? "center" : "right center", backgroundRepeat: "no-repeat"}}/>
 
         <div className="absolute w-full lg:w-1/2 max-w-[517px] bottom-[23px] lg:bottom-[50px] px-4 xl:left-[62px]">
           <div className="flex flex-col w-full items-start gap-[13px] md:gap-[30px]">
