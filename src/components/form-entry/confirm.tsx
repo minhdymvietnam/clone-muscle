@@ -44,29 +44,47 @@ export const FormEntryConfirm = ({ formData, onConfirm, onEdit }: FormEntryConfi
     setIsSubmitting(true);
 
     try {
-      // Simulate fetch API call with 1 second timeout
-      await fetch('/api/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const form = new FormData();
+
+      const phpFormMap = {
+        "氏名": formData.name,
+        "ふりがな": formData.furigana,
+        "メールアドレス": formData.email,
+        "電話番号": formData.phone,
+        "生年月日": `${formData.birthYear}年${formData.birthMonth}月${formData.birthDay}日`,
+        "お住まいの都道府県": formData.prefecture,
+        "志望動機": formData.muscleFeelings ?? "",
+        "個人情報保護方針": "同意する",
+      };
+
+      for (const key in phpFormMap) {
+        form.append(key, phpFormMap[key as keyof typeof phpFormMap]);
+      }
+
+      const res = await fetch("/mailer.php", {
+        method: "POST",
+        body: form, // KHÔNG cần headers, trình duyệt tự set `Content-Type: multipart/form-data`
       });
 
-      // Add 1 second delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      if (res.redirected) {
+        // Nếu PHP redirect về trang cảm ơn
+        window.location.href = res.url;
+        return;
+      }
 
+      // Nếu không redirect, xử lý tiếp ở React
       onConfirm();
     } catch (error) {
-      console.error('Submission failed:', error);
-      onConfirm(); // Still proceed to next step for demo purposes
+      console.error("Submission failed:", error);
+      onConfirm(); // fallback xử lý
     } finally {
       setIsSubmitting(false);
       setTimeout(() => {
         window.location.href = "#entry";
-      }, 500)
+      }, 500);
     }
   };
+
 
   return (
     <>
