@@ -1,4 +1,4 @@
-import { useRef, ReactNode } from 'react';
+import {useRef, ReactNode, useEffect} from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -35,37 +35,42 @@ export const GSAPCardStack = ({
   useGSAP(() => {
     if (!containerRef.current || !cardsRef.current) return;
 
-    let ctx = gsap.context(() => {
-      // Delay setup để đợi DOM ổn định (ảnh, layout v.v.)
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: startPosition,
-              end: () => `+=${(cards.length - 1) * 100}%`,
-              scrub: true,
-              pin: true,
-              anticipatePin: 1
-            }
-          });
+    // const cardElements = cardsRef.current.querySelectorAll('[class*="card-"]');
 
-          gsap.utils.toArray(cardsRef.current!.children).forEach((card, index) => {
-            if (index === 0) {
-              tl.to(card, { yPercent: 0, duration: 0.5 });
-            } else {
-              tl.fromTo(
-                  card,
-                  { yPercent: 100, opacity: 0 },
-                  { yPercent: 0, opacity: 1, duration: 0.5, ease: 'power2.in' }
-              );
-            }
-          });
-        });
-      });
-    }, containerRef);
+    // Create main timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: startPosition,
+        end: () => `+=${(cards.length - 1) * 100}%`,
+        scrub: true,
+        pin: true,
+        anticipatePin: 1
+      }
+    });
 
-    return () => ctx.revert();
+    gsap.utils.toArray(cardsRef.current.children).forEach((card, index) => {
+      if (!card) return;
+      // not set animation for first card
+      if (index === 0) {
+        tl.to(card, { yPercent: 0, duration: 0.5 });
+      } else {
+        tl.fromTo(card, { yPercent: 100, opacity: 0 }, { yPercent: 0, opacity: 100, duration: 0.5, ease: 'power2.in' });
+      }
+    })
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  });
+
+  useEffect(() => {
+    const loadingTimer = setTimeout(() => {
+      ScrollTrigger.refresh()
+    }, 500);
+
+    return () => clearTimeout(loadingTimer);
   }, []);
 
   return (
