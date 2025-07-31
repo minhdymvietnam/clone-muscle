@@ -1,10 +1,9 @@
-export const Loading = () => {
+export const Loading = ({isLoading}: { isLoading: boolean }) => {
     return (
         <>
             <style jsx>{`
                 #lLoading { 
                     z-index: 9999; 
-                    display: block; 
                     position: fixed; 
                     top: 0; 
                     right: 0; 
@@ -175,8 +174,8 @@ export const Loading = () => {
                     100% { margin-left: -100%; }
                 }
             `}</style>
-            
-            <div id="lLoading">
+
+            <div id="lLoading" style={{display: isLoading ? "block" : "none"}}>
                 <div className="loading-inner">
                     <div className="loading-animation">
                         <span></span>

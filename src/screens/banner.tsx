@@ -5,7 +5,7 @@ const imageUrls = {
 
 export const Banner = () => {
   return <div className="lg:self-stretch w-full lg:h-[100lvh]">
-    <img src={imageUrls.banner} className="hidden lg:block w-full h-full object-cover" alt="Artboard" />
-    <img src={imageUrls.bannerSP} className="lg:hidden w-full h-full object-contain" alt="Artboard" />
+    <img src={imageUrls.banner} fetchpriority="high" className="hidden lg:block w-full h-full object-cover" alt="Artboard"/>
+    <img src={imageUrls.bannerSP} fetchpriority="high" className="lg:hidden w-full h-full object-contain" alt="Artboard"/>
   </div>
 }
