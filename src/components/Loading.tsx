@@ -1,8 +1,191 @@
 export const Loading = () => {
-    return <div id="lLoading">
-        <div className="loading-inner">
-            <div className="loading-animation"><span></span></div>
-            <div className="loading-text-animation"><span></span></div>
-        </div>
-    </div>
+    return (
+        <>
+            <style jsx>{`
+                #lLoading { 
+                    z-index: 9999; 
+                    display: block; 
+                    position: fixed; 
+                    top: 0; 
+                    right: 0; 
+                    bottom: 0; 
+                    left: 0; 
+                    background-color: #0f0f11;
+                }
+                
+                #lLoading .loading-inner { 
+                    text-align: center; 
+                    position: fixed; 
+                    top: 50%; 
+                    left: 50%; 
+                    -webkit-transform: translate(-50%, -50%); 
+                    transform: translate(-50%, -50%); 
+                    height: 16px;
+                }
+                
+                .loading-animation {
+                    display: block;
+                    position: relative;
+                    overflow: hidden;
+                    width: 48px; 
+                    height: 56px;
+                }
+                
+                .loading-animation:before,
+                .loading-animation span:after { 
+                    position: absolute; 
+                    bottom: 0; 
+                    left: 0; 
+                    content: ''; 
+                    width: 100%; 
+                    height: 100%; 
+                }
+                
+                .loading-animation:before { 
+                    background: url('images/loading_sp01.png') no-repeat bottom center; 
+                    background-size: cover; 
+                }
+                
+                .loading-animation span:after { 
+                    background: url('images/loading_sp02.png') no-repeat bottom center; 
+                    background-size: cover; 
+                    -webkit-animation: loading_anime_image 1s infinite linear; 
+                    animation: loading_anime_image 1s infinite linear; 
+                }
+                
+                .loading-animation span { 
+                    position: absolute; 
+                    bottom: 0; 
+                    left: 0; 
+                    -webkit-animation: loading_anime_image_mask 1s infinite linear; 
+                    animation: loading_anime_image_mask 1s infinite linear; 
+                    width: 100%; 
+                    height: 100%; 
+                    overflow: hidden; 
+                }
+                
+                .loading-text-animation {
+                    display: block;
+                    position: relative;
+                    height: 17px;
+                    overflow: hidden;
+                    width: 55px; 
+                    margin-top: 7px; 
+                    margin-left: -2px;
+                }
+                
+                .loading-text-animation:before,
+                .loading-text-animation span:after { 
+                    position: absolute; 
+                    top: 0; 
+                    content: 'LOADING'; 
+                    font-family: 'Teko', sans-serif; 
+                    line-height: 1.1; 
+                    letter-spacing: .03em; 
+                    left: 0px; 
+                    font-size: 1.2rem; 
+                    text-align: left; 
+                }
+                
+                .loading-text-animation:before { 
+                    color: #fff; 
+                }
+                
+                .loading-text-animation span:after { 
+                    color: #ffff00; 
+                    -webkit-animation: loading_anime_text 1s infinite linear; 
+                    animation: loading_anime_text 1s infinite linear; 
+                }
+                
+                .loading-text-animation span { 
+                    position: absolute; 
+                    top: 0; 
+                    left: 0; 
+                    overflow: hidden; 
+                    width: 100%; 
+                    -webkit-animation: loading_anime_text_mask 1s infinite linear; 
+                    animation: loading_anime_text_mask 1s infinite linear; 
+                    height: 17px; 
+                }
+                
+                @media screen and (min-width: 768px) {
+                    .loading-animation:before { 
+                        background-image: url('images/loading_pc01.png'); 
+                    }
+                    .loading-animation span:after { 
+                        background-image: url('images/loading_pc02.png'); 
+                    }
+                    
+                    .loading-text-animation { 
+                        width: 50px; 
+                        margin-left: 0px;
+                    }
+                    .loading-text-animation:before,
+                    .loading-text-animation span:after { 
+                        font-size: inherit; 
+                        left: 3px;
+                    }
+                }
+                
+                @-webkit-keyframes loading_anime_image_mask {
+                    0% { height: 0%; bottom: 0%; }
+                    50% { height: 100%; bottom: 0%; }
+                    100% { height: 100%; bottom: 100%; }
+                }
+                
+                @keyframes loading_anime_image_mask {
+                    0% { height: 0%; bottom: 0%; }
+                    50% { height: 100%; bottom: 0%; }
+                    100% { height: 100%; bottom: 100%; }
+                }
+                
+                @-webkit-keyframes loading_anime_image {
+                    0% { bottom: 0%; }
+                    50% { bottom: 0%; }
+                    100% { bottom: -100%; }
+                }
+                
+                @keyframes loading_anime_image {
+                    0% { bottom: 0%; }
+                    50% { bottom: 0%; }
+                    100% { bottom: -100%; }
+                }
+                
+                @-webkit-keyframes loading_anime_text_mask {
+                    0% { width: 0%; left: 0%; }
+                    50% { width: 100%; left: 0%; }
+                    100% { width: 100%; left: 100%; }
+                }
+                
+                @keyframes loading_anime_text_mask {
+                    0% { width: 0%; left: 0%; }
+                    50% { width: 100%; left: 0%; }
+                    100% { width: 100%; left: 100%; }
+                }
+                
+                @-webkit-keyframes loading_anime_text {
+                    0% { margin-left: 0%; }
+                    50% { margin-left: 0%; }
+                    100% { margin-left: -100%; }
+                }
+                
+                @keyframes loading_anime_text {
+                    0% { margin-left: 0%; }
+                    50% { margin-left: 0%; }
+                    100% { margin-left: -100%; }
+                }
+            `}</style>
+            
+            <div id="lLoading">
+                <div className="loading-inner">
+                    <div className="loading-animation">
+                        <span></span>
+                    </div>
+                    <div className="loading-text-animation">
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
 }
