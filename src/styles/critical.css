@@ -1,0 +1,45 @@
+/* Critical CSS for above-the-fold content */
+:root {
+  --black: #000000;
+  --mainyellow-neon: #fcff00;
+  --neon-yellow: #fcff00;
+  --subblack: #1a1a1a;
+  --textwhite: #ffffff;
+  --white: #ffffff;
+}
+
+/* Critical layout styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: var(--black);
+  color: var(--textwhite);
+}
+
+/* Banner section critical styles */
+#banner {
+  background-color: var(--black);
+  min-height: 100vh;
+}
+
+/* Loading skeleton */
+.loading-skeleton {
+  background: linear-gradient(90deg, #333 25%, #444 50%, #333 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -113,8 +113,6 @@ export default function FormEntry() {
     return refMap[fieldName];
   };
 
-
-
   const form = useForm<FormData>({
     mode: "onChange",
     resolver: zodResolver(formSchema),
@@ -202,12 +200,46 @@ export default function FormEntry() {
   };
 
   const handleConfirm = async () => {
+    if (!formData) return
+
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 100));
-      setSubmitResult('success');
+      const form = new FormData();
+      const phpFormMap = {
+        "氏名": formData.name,
+        "ふりがな": formData.furigana,
+        "メールアドレス": formData.email,
+        "電話番号": formData.phone,
+        "生年月日": `${formData.birthYear}年${formData.birthMonth}月${formData.birthDay}日`,
+        "お住まいの都道府県": formData.prefecture,
+        "筋肉への想い": formData.muscleFeelings ?? "",
+        "個人情報保護方針": "同意する",
+      };
+
+      for (const key in phpFormMap) {
+        form.append(key, phpFormMap[key as keyof typeof phpFormMap]);
+      }
+
+      const res = await fetch("/mail.php", {
+        method: "POST",
+        body: form,
+      });
+
+      if (res.ok) {
+        const result = await res.json();
+        if (result.success) {
+          setSubmitResult('success');
+        } else {
+          console.error('Server error:', result.message, result.errors);
+          setSubmitResult('error');
+        }
+      } else {
+        console.error('HTTP error:', res.status, res.statusText);
+        setSubmitResult('error');
+      }
+      
       setCurrentStep(3);
     } catch (error) {
+      console.error('Form submission error:', error);
       setSubmitResult('error');
       setCurrentStep(3);
     } finally {
@@ -247,7 +279,7 @@ export default function FormEntry() {
                   <img
                     className="w-[52px] lg:w-[119px] h-px object-cover mt-5"
                     alt="Line"
-                    src="/icons/line-10.svg"
+                    src="icons/line-10.svg"
                   />
                 )}
                 <div className="flex w-max flex-col items-center gap-4">

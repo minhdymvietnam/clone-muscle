@@ -10,7 +10,7 @@ const InterviewSubsection = (): JSX.Element => {
   const interviewCards = [
     {
       id: 1,
-      imagePath: "/images/interview-1.png",
+      imagePath: "images/interview-1.png",
       titleLines: [
         { text: '筋肉で街の"安心"を', width: "315px" },
         { text: "守ってます。", width: "204px" },
@@ -19,7 +19,7 @@ const InterviewSubsection = (): JSX.Element => {
     },
     {
       id: 2,
-      imagePath: "/images/interview-2.png",
+      imagePath: "images/interview-2.png",
       titleLines: [
         { text: "日勤・夜勤・筋トレ、", width: "326px" },
         { text: "全部こなせる体に。", width: "300px" },
@@ -52,7 +52,7 @@ const InterviewSubsection = (): JSX.Element => {
           {interviewCards.map((card) => (
             <div className="space-y-6" key={card.id}>
               <div className="relative px-4" onClick={() => setItemShow(card)}>
-                <img className="w-[319px]" src="/images/interview-card-bg.png" alt="interview card bg" />
+                <img className="w-[319px]" src="images/interview-card-bg.png" alt="interview card bg" />
                 <img src={card.imagePath} alt="" className="absolute w-[320px] h-auto right-0 bottom-0 transition delay-100 grayscale hover:grayscale-0 cursor-pointer" />
                 <div className="absolute space-y-2.5 left-0 bottom-5">
                   {card.titleLines.map((line, index) => (<div key={index} className="custom-clip-path-right pl-2.5 pr-5 py-1 bg-mainyellow-neon [font-family:'Noto_Sans_JP',Helvetica] font-bold text-[#000000] text-3xl tracking-[0] leading-[normal] whitespace-nowrap w-fit">{line.text}</div>))}
@@ -87,7 +87,7 @@ const InterviewSubsection = (): JSX.Element => {
             <div className="flex flex-col w-[1200px] items-end gap-2.5 pt-[60px] pb-16 px-[72px] relative bg-subblack border border-solid border-[#fcff00]">
               <div className="flex flex-col w-[624.59px] items-start gap-[50px] relative flex-[0_0_auto]">
 	              <div className="max-w-[364px] w-3/5 ">
-		              <img src={`/images/point-0${itemShow?.id}.png`} width={364} height={155} alt={itemShow?.description} className="w-full h-auto" />
+		              <img src={`images/point-0${itemShow?.id}.png`} width={364} height={155} alt={itemShow?.description} className="w-full h-auto" />
 	              </div>
 
                 <CardContent className="flex items-start gap-[60px] w-full p-0">
@@ -126,7 +126,7 @@ const InterviewSubsection = (): JSX.Element => {
             <div className="flex flex-col items-center justify-between gap-5">
               <div className="flex flex-col gap-5">
 	              <div className="max-w-[364px] w-3/5 ">
-		              <img src={`/images/point-0${itemShow?.id}.png`} width={364} height={155} alt={itemShow?.description} className="w-full h-auto" />
+		              <img src={`images/point-0${itemShow?.id}.png`} width={364} height={155} alt={itemShow?.description} className="w-full h-auto" />
 	              </div>
 
                 <div className="[font-family:'Noto_Sans_JP',Helvetica] font-normal text-white text-xs text-justify tracking-normal leading-[1.75] whitespace-pre-line">

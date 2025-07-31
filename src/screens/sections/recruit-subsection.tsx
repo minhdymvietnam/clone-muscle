@@ -113,7 +113,7 @@ const RecruitSubsection = (): JSX.Element => {
       <div
         className="fixed bg-subblack lg:absolute max-lg:-z-[2] inset-0"
         style={{
-          backgroundImage: isMobile ? `url(/images/recruit_bg_sp.png)` : 'url(/images/recruit-bg.png)',
+          backgroundImage: isMobile ? `url(images/recruit_bg_sp.png)` : 'url(images/recruit-bg.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'top',
           backgroundRepeat: 'no-repeat',
@@ -146,7 +146,7 @@ const RecruitSubsection = (): JSX.Element => {
               </div>
 
               {/* <div className="absolute max-md:scale-50 max-md:left-[170px] w-full md:w-[708px] h-[205px] top-[31px] md:top-[127px] left-0"> */}
-              <img src="/images/floe-graphic.png" alt="floe graphic" className="mt-[31px]" />
+              <img src="images/floe-graphic.png" alt="floe graphic" className="mt-[31px]" />
 
               <div className="inline-flex items-center justify-center gap-2.5 mt-4 md:mt-7">
                 <p className="[font-family:'Noto_Sans_JP',Helvetica] font-bold text-textwhite text-[10px] md:text-base text-center tracking-[0] leading-[1.75] md:leading-4 whitespace-nowrap">

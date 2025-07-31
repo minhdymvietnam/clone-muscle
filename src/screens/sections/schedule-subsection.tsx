@@ -23,7 +23,7 @@ const ScheduleSubsection = (): JSX.Element => {
       content: (
         <div className="relative w-52 h-[60px]">
           <img
-            src="/images/schedule_gym.png"
+            src="images/schedule_gym.png"
             className="absolute w-[60px] h-[60px] top-0 left-0 object-cover"
             alt="Img schedule gym"
           />
@@ -88,7 +88,7 @@ const ScheduleSubsection = (): JSX.Element => {
         <>
           <div className="relative w-[216.24px] h-[62.4px]">
             <img
-              src="/images/schedule_gym.png"
+              src="images/schedule_gym.png"
               className="absolute w-[62px] h-[62px] top-0 left-0 object-cover"
               alt="Img schedule gym"
             />
@@ -99,7 +99,7 @@ const ScheduleSubsection = (): JSX.Element => {
           </div>
         </>
       ),
-      bottomImage: "/images/schedule_gym-1.png",
+      bottomImage: "images/schedule_gym-1.png",
     },
     {
       time: "13:00",
@@ -117,7 +117,7 @@ const ScheduleSubsection = (): JSX.Element => {
           </div>
         </>
       ),
-      bottomImage: "/images/schedule_gym-2.png",
+      bottomImage: "images/schedule_gym-2.png",
     },
     {
       time: "22:00",
@@ -136,7 +136,7 @@ const ScheduleSubsection = (): JSX.Element => {
           </div>
         </>
       ),
-      bottomImage: "/images/schedule_gym-3.png",
+      bottomImage: "images/schedule_gym-3.png",
     },
     {
       time: "23:00",
@@ -242,17 +242,17 @@ const ScheduleSubsection = (): JSX.Element => {
 
           {/* Empty image placeholders */}
           <img
-            src="/images/schedule_gym-1.png"
+            src="images/schedule_gym-1.png"
             className="absolute w-[343px] h-[220px] top-0 left-[525px]"
             alt="Mask group"
           />
           <img
-            src="/images/schedule_gym-3.png"
+            src="images/schedule_gym-3.png"
             className="absolute w-[343px] h-[220px] top-[633px] left-[525px]"
             alt="Mask group"
           />
           <img
-            src="/images/schedule_gym-2.png"
+            src="images/schedule_gym-2.png"
             className="absolute w-[343px] h-[220px] top-[376px] left-0"
             alt="Mask group"
           />

@@ -78,7 +78,7 @@ export const GSAPCardStack = ({
       }}
     >
       <div style={{
-        backgroundImage: `url("/images/yellow-bg-top.png")`,
+        backgroundImage: `url("images/yellow-bg-top.png")`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'top left',
@@ -99,7 +99,7 @@ export const GSAPCardStack = ({
       <div className="flex relative items-center justify-center" ref={containerRef}>
         <div className="relative w-full max-w-[1644px] flex">
           {/* AMBASSADOR text */}
-          <div className="hidden md:block flex-1" style={{backgroundImage: "url(/images/AMBASSADOR.png)", backgroundRepeat: "no-repeat", backgroundPosition: "center right", backgroundSize: "auto 90%"}} />
+          <div className="hidden md:block flex-1" style={{backgroundImage: "url(images/AMBASSADOR.png)", backgroundRepeat: "no-repeat", backgroundPosition: "center right", backgroundSize: "auto 90%"}} />
 
           {/* Cards stack */}
           <div ref={cardsRef} className="cards w-full md:w-10/12 max-w-[1500px] xl:w-11/12 h-[78vh] lg:h-[82lvh] relative rounded-[20px] overflow-hidden mr-0 ml-auto">

@@ -1,18 +1,20 @@
+import React from "react";
 import {SectionCode} from "@/lib/enums.ts";
 import {useMediaQuery} from "react-responsive";
 import {useGSAP} from '@gsap/react';
 import {horizontalLoop} from "@/helpers/horizontalLoop.ts";
 import {useRef} from "react";
+import LazyImage from "@/components/ui/LazyImage.tsx";
 
 const imageUrls = {
-  background: "/images/issue-bg.png",
-  left_side: "/images/issue-left.png",
-  right_side: "/images/issue-right.png",
-  left_side_mobile: "/images/issue-left-sp.png",
-  right_side_mobile: "/images/issue-right-sp.png",
+  background: "images/issue-bg.png",
+  left_side: "images/issue-left.png",
+  right_side: "images/issue-right.png",
+  left_side_mobile: "images/issue-left-sp.png",
+  right_side_mobile: "images/issue-right-sp.png",
 }
 
-const IssueSubsection = (): JSX.Element => {
+const IssueSubsection = React.memo((): JSX.Element => {
   const boxesContainer = useRef<HTMLDivElement>(null);
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
@@ -57,16 +59,16 @@ const IssueSubsection = (): JSX.Element => {
           <div className="flex flex-col items-center justify-center mx-auto w-full max-w-screen-xl">
               <div className="flex items-baseline justify-center gap-1.5 lg:gap-4">
                 <div className="h-4 lg:h-10 flex items-center">
-                  <img
+                  <LazyImage
                     className="h-full w-auto"
                     alt="Mask group"
-                    src="/images/issue-line.png"
+                    src="images/issue-line.png"
                   />
                 </div>
 
-                <div className="font-black text-center text-xl lg:text-5xl [font-family:'Noto_Sans_JP',Helvetica] bg-contain bg-center bg-clip-text text-transparent bg-white" style={{backgroundImage: "url('/images/text-bg.png')"}}>
+                <div className="font-black text-center text-xl lg:text-5xl [font-family:'Noto_Sans_JP',Helvetica] bg-contain bg-center bg-clip-text text-transparent bg-white" style={{backgroundImage: "url('images/text-bg.png')"}}>
                   <span className="pr-1">こんな</span>
-                  <span className="font-black text-[40px] lg:text-8xl leading-[50px] lg:leading-[123px] whitespace-nowrap tracking-[0] bg-cover bg-center bg-clip-text text-transparent bg-mainyellow-neon" style={{backgroundImage: "url('/images/text-bg.png')"}}>
+                  <span className="font-black text-[40px] lg:text-8xl leading-[50px] lg:leading-[123px] whitespace-nowrap tracking-[0] bg-cover bg-center bg-clip-text text-transparent bg-mainyellow-neon" style={{backgroundImage: "url('images/text-bg.png')"}}>
                     お悩み
                   </span>
                   は
@@ -75,10 +77,10 @@ const IssueSubsection = (): JSX.Element => {
                 </div>
 
                 <div className="h-4 lg:h-10 flex items-center">
-                  <img
+                  <LazyImage
                     className="h-full w-auto"
                     alt="Mask group"
-                    src="/images/issue-line.png"
+                    src="images/issue-line.png"
                   />
                 </div>
               </div>
@@ -87,12 +89,12 @@ const IssueSubsection = (): JSX.Element => {
             <div className="mx-auto w-fu ll max-w-screen-xl mt-9">
           <div className="relative w-full">
             <div className="relative mx-auto max-w-[628px] w-full">
-              <img src="/images/issue-center-dizzy.png" className="w-full" alt=""/>
+              <LazyImage src="images/issue-center-dizzy.png" className="w-full" alt=""/>
             </div>
             <div className="max-lg:max-w-[312px] max-lg:-mt-40 max-lg:flex max-lg:flex-col-reverse max-lg:items-center max-lg:gap-10 max-lg:mx-auto lg:absolute w-full lg:h-full lg:top-0 lg:bottom-0 lg:left-0 lg:right-0">
               <div className="lg:absolute lg:top-[30px] left-0 order-2">
                 <div className="w-[250px] aspect-square relative mb-[5px]">
-                  <div className="w-full h-full relative rounded-full overflow-hidden"><img src="/images/issue-side-1.png" alt="もっと自分を高める" className="absolute top-0 bottom-0 left-0 right-0 w-full h-full object-cover"/></div>
+                  <div className="w-full h-full relative rounded-full overflow-hidden"><LazyImage src="images/issue-side-1.png" alt="もっと自分を高める" className="absolute top-0 bottom-0 left-0 right-0 w-full h-full object-cover"/></div>
                   <div className="absolute bottom-0 left-0 w-max custom-clip-path-right bg-neon-yellow [font-family:'Noto_Sans_JP',Helvetica] font-bold text-3xl py-1 px-2.5 pr-5">もっと自分を高める</div>
                 </div>
                 <div className="rectangle-outline">
@@ -101,7 +103,7 @@ const IssueSubsection = (): JSX.Element => {
               </div>
               <div className="lg:absolute lg:bottom-[30px] left-[180px] order-1">
                 <div className="w-[250px] aspect-square relative mb-[5px]">
-                  <div className="w-full h-full relative rounded-full overflow-hidden"><img src="/images/issue-side-2.png" alt="『筋トレが趣味』を" className="absolute top-0 bottom-0 left-0 right-0 w-full h-full object-cover"/></div>
+                  <div className="w-full h-full relative rounded-full overflow-hidden"><LazyImage src="images/issue-side-2.png" alt="『筋トレが趣味』を" className="absolute top-0 bottom-0 left-0 right-0 w-full h-full object-cover"/></div>
                   <div className="absolute bottom-0 left-0 right-9 rectangle-outline">
                     <div className="inner [font-family:'Noto_Sans_JP',Helvetica] font-bold text-xl text-neon-yellow">『筋トレが趣味』を</div>
                   </div>
@@ -110,7 +112,7 @@ const IssueSubsection = (): JSX.Element => {
               </div>
               <div className="lg:absolute lg:top-1/2 lg:transform lg:translate-y-[-50%] right-0 order-3">
                 <div className="w-[250px] aspect-square relative mb-[5px]">
-                  <div className="w-full h-full relative rounded-full overflow-hidden"><img src="/images/issue-side-3.png" alt="もっと筋トレしたいのに" className="absolute top-0 bottom-0 left-0 right-0 w-full h-full object-cover"/></div>
+                  <div className="w-full h-full relative rounded-full overflow-hidden"><LazyImage src="images/issue-side-3.png" alt="もっと筋トレしたいのに" className="absolute top-0 bottom-0 left-0 right-0 w-full h-full object-cover"/></div>
                   <div className="absolute bottom-0 left-0 -right-1 rectangle-outline">
                     <div className="inner [font-family:'Noto_Sans_JP',Helvetica] font-bold text-xl text-neon-yellow">もっと筋トレしたいのに</div>
                   </div>
@@ -119,10 +121,10 @@ const IssueSubsection = (): JSX.Element => {
               </div>
             </div>
           </div>
-              <img
+              <LazyImage
                 className="w-[847px] h-[72px] md:h-[136px] mx-auto object-cover"
                 alt="Polygon"
-                src="/icons/polygon-1.svg"
+                src="icons/polygon-1.svg"
               />
             </div>
         </div>
@@ -183,8 +185,8 @@ const IssueSubsection = (): JSX.Element => {
 
             <div className="relative pt-10 lg:pt-60 w-full">
               <div className="lg:absolute w-full lg:bottom-0 lg:left-0 flex items-center gap-5 justify-between">
-                <img className="w-full h-auto md:w-auto md:h-[350px] xl:h-[500px] 2xl:h-[710px] 3xl:h-[800px] object-cover" src={isMobile ? imageUrls.left_side_mobile : imageUrls.left_side} alt="Message"/>
-                <img className="w-full h-auto md:w-auto md:h-[350px] xl:h-[500px] 2xl:h-[710px] 3xl:h-[800px] object-cover" src={isMobile ? imageUrls.right_side_mobile : imageUrls.right_side} alt="Message"/>
+                <LazyImage className="w-full h-auto md:w-auto md:h-[350px] xl:h-[500px] 2xl:h-[710px] 3xl:h-[800px] object-cover" src={isMobile ? imageUrls.left_side_mobile : imageUrls.left_side} alt="Message"/>
+                <LazyImage className="w-full h-auto md:w-auto md:h-[350px] xl:h-[500px] 2xl:h-[710px] 3xl:h-[800px] object-cover" src={isMobile ? imageUrls.right_side_mobile : imageUrls.right_side} alt="Message"/>
               </div>
             </div>
           </div>
@@ -202,6 +204,8 @@ const IssueSubsection = (): JSX.Element => {
       </div>
     </section>
   );
-};
+});
+
+IssueSubsection.displayName = 'IssueSubsection';
 
 export default IssueSubsection;

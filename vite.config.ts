@@ -21,4 +21,20 @@ export default defineConfig({
       { find: "@public", replacement: path.resolve(__dirname, "public") }
     ],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          animations: ['gsap', '@gsap/react', 'framer-motion'],
+          ui: ['@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-select']
+        }
+      }
+    },
+    target: 'esnext',
+    minify: 'esbuild'
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'gsap', '@gsap/react']
+  }
 });

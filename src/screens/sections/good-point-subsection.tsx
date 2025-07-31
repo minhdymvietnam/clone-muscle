@@ -86,7 +86,7 @@ const GoodPointSubsection = (): JSX.Element => {
                 <div className="flex flex-col w-full md:w-2/5 max-w-[597px] items-start gap-6 xl:px-[30px] 3xl:px-2.5 xl:gap-10">
                   {/* Point Number */}
                   <div className="max-w-[364px] w-3/5 ">
-                    <img src={`/images/point-${point.id}.png`} width={364} height={155} alt={point.title} className="w-full h-auto" />
+                    <img src={`images/point-${point.id}.png`} width={364} height={155} alt={point.title} className="w-full h-auto" />
                   </div>
 
                   {/* Point Title */}
@@ -113,7 +113,7 @@ const GoodPointSubsection = (): JSX.Element => {
                         className={cn("aspect-[933.92/574.7] w-full bg-[100%_100%]")}
                         style={{
                           clipPath: "polygon(0px 0px, 71% 0%, 96% 100%, 0% 100%)",
-                          backgroundImage: `url(/images/good-point-${point.id}.png)`,
+                          backgroundImage: `url(images/good-point-${point.id}.png)`,
                           backgroundSize: "cover",
                           backgroundPosition: "center",
                           backgroundRepeat: "no-repeat",
@@ -127,7 +127,7 @@ const GoodPointSubsection = (): JSX.Element => {
                             point.alignment === "right"
                               ? "polygon(0px 0px, 71% 0%, 96% 100%, 0% 100%)"
                               : "polygon(29% 0px, 100% 0px, 100% 100%, 4% 100%)",
-                          backgroundImage: `url(/images/good-point-${point.id}.png)`,
+                          backgroundImage: `url(images/good-point-${point.id}.png)`,
                           backgroundSize: "cover",
                           backgroundPosition: "center",
                           backgroundRepeat: "no-repeat",
@@ -142,18 +142,18 @@ const GoodPointSubsection = (): JSX.Element => {
                     <img
                       className="absolute w-[13.33%] right-0 bottom-0"
                       alt="Vector"
-                      src="/icons/vector-45.svg"
+                      src="icons/vector-45.svg"
                     />
 
                     <img
                       className="absolute w-[17%] top-0 left-[12.06%]"
                       alt="Rectangle"
-                      src="/images/rectangle-73-2.png"
+                      src="images/rectangle-73-2.png"
                     />
                     <img
                       className="absolute w-[26%] bottom-0 left-0"
                       alt="Rectangle"
-                      src="/images/rectangle-73-1.png"
+                      src="images/rectangle-73-1.png"
                     />
                   </div>
 

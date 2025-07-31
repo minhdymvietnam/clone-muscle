@@ -1,4 +1,4 @@
-const logoUrl = "/images/logo.png"
+const logoUrl = "images/logo.png"
 
 export default function Footer() {
   return <footer className="flex max-md:flex-col max-md:gap-[26px] items-center justify-between bg-subblack px-[30px] py-[15px]">
