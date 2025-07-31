@@ -276,7 +276,7 @@ html.lenis body {
   height: 17px;
   overflow: hidden;
 }
-.loading-text-animation{ width: 52px; margin-top: 7px; margin-left: -2px;}
+.loading-text-animation{ width: 55px; margin-top: 7px; margin-left: -2px;}
 .loading-text-animation:before,
 .loading-text-animation span:after { position: absolute; top: 0; content: 'LOADING'; font-family: 'Teko', sans-serif; line-height: 1.1; letter-spacing: .03em; left: 0px; font-size: 1.2rem; text-align: left; }
 .loading-text-animation:before{ color:#fff; }
@@ -287,7 +287,7 @@ html.lenis body {
   .loading-animation:before{ background-image:url('images/loading_pc01.png'); }
   .loading-animation span:after{ background-image:url('images/loading_pc02.png'); }
 
-  .loading-text-animation{ width: 48px; margin-left: 0px;}
+  .loading-text-animation{ width: 50px; margin-left: 0px;}
   .loading-text-animation:before,
   .loading-text-animation span:after { font-size: inherit; left: 3px;}
 

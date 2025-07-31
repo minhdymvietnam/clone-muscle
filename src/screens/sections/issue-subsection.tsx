@@ -182,9 +182,9 @@ const IssueSubsection = (): JSX.Element => {
             </div>
 
             <div className="relative pt-10 lg:pt-60 w-full">
-              <div className="lg:absolute w-full lg:bottom-0 lg:left-0 flex items-center gap-5 justify-between">
-                <img className="w-full h-auto md:w-auto md:h-[350px] xl:h-[500px] 2xl:h-[710px] 3xl:h-[800px] object-cover" src={isMobile ? imageUrls.left_side_mobile : imageUrls.left_side} alt="Message"/>
-                <img className="w-full h-auto md:w-auto md:h-[350px] xl:h-[500px] 2xl:h-[710px] 3xl:h-[800px] object-cover" src={isMobile ? imageUrls.right_side_mobile : imageUrls.right_side} alt="Message"/>
+              <div className="lg:absolute w-full lg:bottom-0 lg:left-0 flex items-center md:gap-5 justify-between">
+                <img className="w-[49%] h-auto md:w-auto md:h-[350px] xl:h-[500px] 2xl:h-[710px] 3xl:h-[800px] object-cover" src={isMobile ? imageUrls.left_side_mobile : imageUrls.left_side} alt="Message"/>
+                <img className="w-[49%] h-auto md:w-auto md:h-[350px] xl:h-[500px] 2xl:h-[710px] 3xl:h-[800px] object-cover" src={isMobile ? imageUrls.right_side_mobile : imageUrls.right_side} alt="Message"/>
               </div>
             </div>
           </div>
