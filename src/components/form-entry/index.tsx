@@ -219,7 +219,7 @@ export default function FormEntry() {
         form.append(key, phpFormMap[key as keyof typeof phpFormMap]);
       }
 
-      const res = await fetch("/mail.php", {
+      const res = await fetch("mail.php", {
         method: "POST",
         body: form,
       });
