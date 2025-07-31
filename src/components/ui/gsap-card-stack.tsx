@@ -68,7 +68,7 @@ export const GSAPCardStack = ({
   useEffect(() => {
     const loadingTimer = setTimeout(() => {
       ScrollTrigger.refresh()
-    }, 500);
+    }, 2000);
 
     return () => clearTimeout(loadingTimer);
   }, []);
