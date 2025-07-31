@@ -2,7 +2,6 @@ import React from "react";
 import {GSAPCardStack} from "../../components/ui/gsap-card-stack.tsx";
 import {useMediaQuery} from "react-responsive";
 import {cn} from "@/lib/utils.ts";
-import LazyImage from "@/components/ui/LazyImage.tsx";
 
 const ambassadors = [
   {

@@ -92,12 +92,12 @@ export default function Header() {
           ))}
         </div>
         <div className="h-full flex items-center ">
-          <a href="#movie"><button
+          <a href={`#${SectionCode.MOVIE}`}><button
             className="w-[180px] [font-family:'Teko',Helvetica] font-medium text-white text-[40px] tracking-[0] leading-[normal] shine movie-shape py-4 px-6 bg-[#5D5D5D] relative overflow-hidden">
             MOVIE
           </button></a>
 
-          <a href="#entry">
+          <a href={`#${SectionCode.ENTRY}`}>
             <button
               className="w-[180px] [font-family:'Teko',Helvetica] font-medium text-[#333333] text-[40px] tracking-[0] leading-[normal] shine entry-shape py-4 px-6 bg-[#FCFF00] relative overflow-hidden">
               ENTRY

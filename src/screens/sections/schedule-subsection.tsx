@@ -146,7 +146,7 @@ const ScheduleSubsection = (): JSX.Element => {
   ];
 
   return (
-    <section className="relative flex flex-col items-center gap-[47px] px-4 lg:px-0 py-[70px] lg:py-[120px] w-full overflow-hidden">
+    <div className="relative flex flex-col items-center gap-[47px] px-4 lg:px-0 py-[70px] lg:py-[120px] w-full overflow-hidden">
 
       <div className="flex flex-col items-center gap-5 lg:gap-[60px] relative z-10 w-full max-w-[1920px]">
         {/* Header */}
@@ -270,7 +270,7 @@ const ScheduleSubsection = (): JSX.Element => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

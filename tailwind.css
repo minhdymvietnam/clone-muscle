@@ -3,7 +3,7 @@
 
 @font-face {
   font-family: 'DIN2014';
-  src: url('/fonts/DIN2014.otf') format('opentype');
+  src: url('fonts/DIN2014.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 /* Smooth scrolling setup */
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
 }
 
 html.lenis,

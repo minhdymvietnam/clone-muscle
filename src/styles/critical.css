@@ -13,14 +13,12 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Noto Sans JP', sans-serif;
-  background-color: var(--black);
   color: var(--textwhite);
 }
 
 /* Banner section critical styles */
 #banner {
   background-color: var(--black);
-  min-height: 100vh;
 }
 
 /* Loading skeleton */
