@@ -1,4 +1,5 @@
 import {Card, CardContent} from "@/components/ui/card.tsx";
+import {SectionCode} from "@/lib/enums.ts";
 import {useMediaQuery} from "react-responsive";
 
 const RecruitSubsection = (): JSX.Element => {
@@ -108,7 +109,7 @@ const RecruitSubsection = (): JSX.Element => {
   ];
 
   return (
-      <section className="relative min-h-[100lvh] w-full py-[70px] lg:py-[120px] px-6 flex justify-center overflow-hidden">
+    <section id={SectionCode.RECRUIT} className="relative min-h-[100lvh] w-full py-[70px] lg:py-[120px] px-6 flex justify-center overflow-hidden">
       <div
         className="fixed bg-subblack lg:absolute max-lg:-z-[2] inset-0"
         style={{

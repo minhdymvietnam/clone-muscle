@@ -1,4 +1,3 @@
-import React from "react";
 import {GSAPCardStack} from "../../components/ui/gsap-card-stack.tsx";
 import {useMediaQuery} from "react-responsive";
 import {cn} from "@/lib/utils.ts";
@@ -43,7 +42,7 @@ const ambassadors = [
   }
 ]
 
-const MuscleCrewSubsection = React.memo((): JSX.Element => {
+const MuscleCrewSubsection = (): JSX.Element => {
   const isMobile = useMediaQuery({
     query: '(max-width: 768px)'
   });
@@ -97,8 +96,6 @@ const MuscleCrewSubsection = React.memo((): JSX.Element => {
       </div>
     </GSAPCardStack>
   );
-});
-
-MuscleCrewSubsection.displayName = 'MuscleCrewSubsection';
+};
 
 export default MuscleCrewSubsection;

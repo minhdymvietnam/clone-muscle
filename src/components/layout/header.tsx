@@ -56,7 +56,7 @@ export default function Header() {
   return <>
     <header className="fixed w-full top-0 left-0 bg-black z-50">
       <div className="flex items-center justify-between px-4 3xl:pr-0 lg:pl-[30px] min-h-14 lg:min-h-[90px] w-[100lvw]">
-      <a className="h-6 lg:h-[35px] gap-2.5 lg:gap-3.5 flex items-center cursor-pointer" href="/">
+      <a className="h-6 lg:h-[35px] gap-2.5 lg:gap-3.5 flex items-center cursor-pointer" href="./">
         <img
           src={logoUrl}
           className="w-auto h-full object-cover"
@@ -92,12 +92,12 @@ export default function Header() {
           ))}
         </div>
         <div className="h-full flex items-center ">
-          <a href={`#${SectionCode.MOVIE}`}><button
+          <a href="#movie"><button
             className="w-[180px] [font-family:'Teko',Helvetica] font-medium text-white text-[40px] tracking-[0] leading-[normal] shine movie-shape py-4 px-6 bg-[#5D5D5D] relative overflow-hidden">
             MOVIE
           </button></a>
 
-          <a href={`#${SectionCode.ENTRY}`}>
+          <a href="#entry">
             <button
               className="w-[180px] [font-family:'Teko',Helvetica] font-medium text-[#333333] text-[40px] tracking-[0] leading-[normal] shine entry-shape py-4 px-6 bg-[#FCFF00] relative overflow-hidden">
               ENTRY

@@ -1,4 +1,11 @@
-import {Accordion, AccordionContent, AccordionItem, AccordionTrigger,} from "@/components/ui/accordion.tsx";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion.tsx";
+import {SectionCode} from "@/lib/enums.ts";
 
 const QaSubsection = (): JSX.Element => {
   const qaItems = [
@@ -36,7 +43,7 @@ const QaSubsection = (): JSX.Element => {
   ];
 
   return (
-      <section className="bg-subblack w-full py-[70px] lg:py-[120px] px-4">
+    <section id={SectionCode.QA} className="bg-subblack w-full py-[70px] lg:py-[120px] px-4">
       <div className="flex flex-col items-center gap-8 lg:gap-[60px] max-w-[1200px] mx-auto">
         <div className="flex flex-col items-center gap-5">
           <div className="inline-flex items-center">

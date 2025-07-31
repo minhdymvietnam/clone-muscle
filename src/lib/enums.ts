@@ -6,6 +6,4 @@ export enum SectionCode {
   INTERVIEW = "interview",
   QA = "qa",
   RECRUIT = "recruit",
-  ENTRY = "entry",
-  MOVIE = "movie",
 }
